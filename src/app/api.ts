@@ -56,5 +56,8 @@ export class UrlModels {
     //     }
     //     ]
     // }
+  документация
+  // https://support.travelpayouts.com/hc/ru/articles/203956163-API-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0-%D0%BA-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%BC#09
+  // https://travelpayouts.github.io/slate/
 
 }
