@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TicketService } from '../ticket.service';
+import { TicketService } from '../service/ticket.service';
 
 @Component({
   selector: 'app-ticket',
@@ -9,6 +9,7 @@ import { TicketService } from '../ticket.service';
 export class TicketComponent implements OnInit {
 
   public ticket: object;
+  county: any;
 
   constructor(
     public ticketService: TicketService
@@ -17,10 +18,15 @@ export class TicketComponent implements OnInit {
 
   ngOnInit() {
     this.ticketService.getTicket().subscribe(
-      (res: any) => {
-        this.ticket = res.data;
-        console.log(this.ticket);
-      },
+      (res: any) => console.log(res),
+      err => console.log(err)
+    );
+    this.ticketService.getDataCounty().subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
+    this.ticketService.getCheapTik().subscribe(
+      res => console.log(res),
       err => console.log(err)
     );
   }
