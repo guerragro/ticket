@@ -25,10 +25,10 @@ export class TicketComponent implements OnInit {
       res => console.log(res),
       err => console.log(err)
     );
-    this.ticketService.getCheapTik().subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    );
+    // this.ticketService.getCheapTik().subscribe(
+    //   res => console.log(res),
+    //   err => console.log(err)
+    // );
   }
 
   check() {
