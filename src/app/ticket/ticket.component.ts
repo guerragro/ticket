@@ -17,14 +17,14 @@ export class TicketComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ticketService.getTicket().subscribe(
+    this.ticketService.getPriceList().subscribe(
       (res: any) => console.log(res),
       err => console.log(err)
     );
-    this.ticketService.getDataCounty().subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    );
+    // this.ticketService.getDataCounty().subscribe(
+    //   res => console.log(res),
+    //   err => console.log(err)
+    // );
     // this.ticketService.getCheapTik().subscribe(
     //   res => console.log(res),
     //   err => console.log(err)
