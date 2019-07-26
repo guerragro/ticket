@@ -199,4 +199,13 @@ export class UrlModels {
   // observe?: "body"; params?: HttpParams | { [param: string]: string | string[]; };
   // reportProgress?: boolean; responseType?: "json"; withCredentials?: boolean; }'
   // {headers: {'*': ''}}.
+
+  // const httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Authorization': 'my-auth-token'
+  //   })
+  // };
+  //     {'Access-Control-Allow-Origin': '*'},
+  //     {'Access-Control-Allow-Headers': '*'},
+  //     {'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTION'}
 }

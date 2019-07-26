@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from '../service/ticket.service';
+import {templateJitUrl} from '@angular/compiler';
 
 @Component({
   selector: 'app-ticket',
@@ -25,13 +26,18 @@ export class TicketComponent implements OnInit {
     //   res => console.log(res),
     //   err => console.log(err)
     // );
-    // this.ticketService.getCheapTik().subscribe(
-    //   res => console.log(res),
-    //   err => console.log(err)
-    // );
+    this.ticketService.getCheapTik().subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
   }
 
-  check() {
+  check(hello1: string, numbe: number, b1: boolean, number1: number, world: string) {
     console.log('work');
+    this.hello(hello1, numbe, b1, number1, world);
+  }
+
+  hello(title = '', val = 0, addplus = true, ratio = 1, ratioUnit = '') {
+    console.log(val, addplus, ratio);
   }
 }
