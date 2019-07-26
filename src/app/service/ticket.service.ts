@@ -26,6 +26,7 @@ export class TicketService {
     return this.http.get(UrlModels.PriceList, {params: (params)});
   }
 
+  // npm start прокси-сервер, изменения в ответе
   public getCheapTik() {
     const params = {
       origin: 'BQJ',
