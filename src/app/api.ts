@@ -79,7 +79,7 @@ export class UrlModels {
   // page — необязательный параметр, отвечает за отражение найденных данных.
   // token — индивидуальный токен.
   // currency — валюта. По умолчанию RUB.
-  // BQJ - владивосток
+  // VVO - владивосток
   // SEL - Сеул
 
   // Параметры ответа
@@ -208,4 +208,15 @@ export class UrlModels {
   //     {'Access-Control-Allow-Origin': '*'},
   //     {'Access-Control-Allow-Headers': '*'},
   //     {'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTION'}
+
+  // HttpErrorResponse
+  // error: ProgressEvent {isTrusted: true, lengthComputable: false, loaded: 0, total: 0, type: "error", …}
+  // headers: HttpHeaders {normalizedNames: Map(0), lazyUpdate: null, headers: Map(0)}
+  // message: "Http failure response for http://api.travelpayouts.com/data/en/cities.json: 0 Unknown Error"
+  // name: "HttpErrorResponse"
+  // ok: false
+  // status: 0
+  // statusText: "Unknown Error"
+  // url: "http://api.travelpayouts.com/data/en/cities.json"
+  // __proto__: HttpResponseBase
 }
