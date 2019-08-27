@@ -39,23 +39,24 @@ export class TicketService {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': 'true'
     };
-    return this.http.get(UrlModels.CheapTik, {headers: (headers), params: (params)});
+    return this.http.get(UrlModels.CheapTik, {params: (params)});
     // const option = {
     //
     // }
   }
 
-  // getDataCounty() {
-  //   const headers = {
-  //     'Access-Control-Allow-Origin' : '*',
-  //     'Access-Control-Allow-Credentials': 'true'
-  //   };
-  //   const params = {
-  //     token: '49679098347c457387656573a8437d2d'
-  //   };
-  //   // const headers = new HttpHeaders();
-  //   // headers.append('Access-Control-Allow-Origin : *', '');
-  //   return this.http.get('http://api.travelpayouts.com/data/en/' +
-  //     'cities.json', {headers: (headers), params: (params)});
-  // }
+  getDataCounty() {
+    const headers = {
+      'Access-Control-Allow-Origin' : '*',
+      'Access-Control-Allow-Credentials': 'true'
+    };
+    const params = {
+      token: '49679098347c457387656573a8437d2d'
+    };
+    // const headers = new HttpHeaders();
+    // headers.append('Access-Control-Allow-Origin : *', '');
+    // return this.http.get('http://api.travelpayouts.com/data/en/' +
+    //   'cities.json', { params: (params)});
+    return this.http.get(UrlModels.Country, {params: (params)});
+  }
 }

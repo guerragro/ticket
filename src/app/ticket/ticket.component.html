@@ -1,1 +1,21 @@
-<input type="text" (click)="check('hello', 12, false, 5, 'world')">
+<div style="text-align: center">Поиск авиабилетов</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-sm-3">
+      <input type="text" value="" (change)="search($event.target.value)" placeholder="Страна отбытия">
+    </div>
+    <div class="col-lg-3 col-sm-3">
+      <input type="text" (keyup)="search($event.target.value)" placeholder="Страна прибытия">
+    </div>
+    <div class="col-lg-3 col-sm-3">
+      <input type="text" (keyup)="search($event.target.value)" placeholder="Дата отбытия">
+    </div>
+    <div class="col-lg-3 col-sm-3">
+      <input type="text" (keyup)="search($event.target.value)" placeholder="Дата прибытия">
+    </div>
+  </div>
+</div>
+<div style="text-align: center">
+  <input type="button" value="Найти">
+</div>
+<!--(changeOn)-->
