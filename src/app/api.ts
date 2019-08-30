@@ -4,12 +4,7 @@ import { Injectable } from '@angular/core';
 
 export class UrlModels {
 
-  // Token:
-  // 49679098347c457387656573a8437d2d
-
-  // ? это метод get
-
-  // Список цен, найденный  за последние 48 часов пользователями по заданным фильтрам
+  // Цены на авиабилеты
   public static PriceList = 'http://api.travelpayouts.com/v2/prices/latest';
 
   //   Параметры запроса
@@ -68,6 +63,49 @@ export class UrlModels {
   // actual  - актуальность предложения.
   // token  - индивидуальный партнерский токен.
 
+  // Календарь цен на месяц
+  public static All = 'http://api.travelpayouts.com/v2/prices/month-matrix';
+  // currency — валюта цен на билеты. Значение по умолчанию — rub.
+  // origin — пункт отправления. IATA код города. Длина 3 символов. Значение по умолчанию LED.
+  // destination — пункт назначения. IATA код города. Длина 3 символа. Значение по умолчанию HKT.
+  // Обратите внимание! Если не указывать пункт отправления и назначения, то API вернет список самых дешевых билетов, которые были найдены за последние 48 часов.
+  //
+  // show_to_affiliates — false — все цены, true — только цены, найденные с партнёрским маркером (рекомендовано). Значение по умолчанию — true.
+  // month — первый день месяца, в формате «YYYY-MM-DD». По умолчанию используется месяц, следующий за текущим.
+  // trip_duration — длительность пребывания в неделях. Если не указано, то в результате будут билеты в одну сторону.
+
+  // Цены по альтернативным направлениям
+  public static AltDest = 'http://api.travelpayouts.com/v2/prices/nearest-places-matrix';
+
+  // Параметры запроса
+  // currency — валюта цен на билеты. Значение по умолчанию — rub.
+  // origin — пункт отправления. IATA код города или код страны. Длина не менее 2 и не более 3 символов.
+  // destination — пункт назначения. IATA код города или код страны. Длина не менее 2 и не более 3.
+  // show_to_affiliates — false — все цены, true — только цены, найденные с партнёрским маркером (рекомендовано). Значение по умолчанию — true.
+  // depart_date — дата отправления в формате 'YYYY-MM-DD'.
+  // return_date — дата возвращения в формате 'YYYY-MM-DD'.
+  // distance — расстояние (в километрах) от пунктов назначения и отправления, на котором ищутся соседние города.
+  // limit — количество выводимых вариантов от 1 до 20. Где 1 - это только вариант с указанными пунктами назначения и отправления.
+  // flexibility — расширение диапазона дат в большую и меньшую сторону. Значение может быть от 0 до 7, где 0 - в результате будут только варианты на указанные даты, 7 - все найденные варианты за неделю до указанных дат и неделю после.
+  // Параметры ответа
+  // prices — массив, полученных цен:
+  //   value — стоимость перелета, в указанной валюте.
+  // trip_class — класс перелёта (только 0 — Эконом).
+  // show_to_affiliates — false — все цены, true — только цены, найденные с партнёрским маркером (рекомендовано). Значение по умолчанию — true.
+  // return_date — дата возвращения.
+  // origin — список пунктов отправления, ближайших к указанному.
+  // number_of_changes — количество пересадок.
+  // gate — агентство, в котором был найден билет.
+  // found_at — время и дата, когда был найден билет.
+  // duration — продолжительность полета в минутах с учетом пересадок и ожидания.
+  // distance — расстояние между пунктом вылета и назначения по карте.
+  // destination — список пунктов назначения, ближайших к указанному.
+  // depart_date — дата отправления.
+  // actual — является ли предложение актуальным.
+  // origins — массив пунктов отправления в ответе.
+  // destinations — массив пунктов назначения в ответе.
+  // errors — сообщение об ошибке. Если возвращается ошибка "Some error occured", значит по этому направлению нет данных в кэше.
+
   // Возвращает самые дешевые билеты безпересадок, а также с 1 или 2 пересадками по выбранному маршруту с фильтрами.
   public static CheapTik = 'http://api.travelpayouts.com/v1/prices/cheap';
 
@@ -123,7 +161,7 @@ export class UrlModels {
   // }
 
   // Данные города в формате JSON
-  public static Country = 'http://api.travelpayouts.com/data/en/cities.json';
+  public static Cities = 'http://api.travelpayouts.com/data/en/cities.json';
 
   // Параметры ответа
   // code — IATA-code страны.
@@ -148,48 +186,6 @@ export class UrlModels {
   //      }
   //     }
   //   ]
-
-  // пример запроса
-  // public static apiWaresPallet: string = UrlModels.service1c + '/mp/wareschange';
-  // moveWareToBox(data: Object): Observable<any> {
-  //   const params = Object.assign({userId: this.user_id}, data);
-  //   return this._restService.post(UrlModels.apiWaresPallet, params)
-  // }
-  // Формат запроса:
-  // {
-  //   "userId": 27,
-  //   "mpbarcode": "M04997",
-  //   "palletbarcode": "PG084101",
-  //   "waresSet": [
-  //     {
-  //       "scannedBarcode": "4600761314185",
-  //       "WCODE": "158959",
-  //       "WNAME": "Чипсы Принглс 40г паприка",
-  //       "customAmount": 3,
-  //       "bestbeforedate": "01.04.2017"
-  //     },
-  //     {
-  //       "scannedBarcode": "",
-  //       "WCODE": "158976",
-  //       "WNAME": "Чипсы Принглс 165г сыр",
-  //       "customAmount": 5,
-  //       "bestbeforedate": "01.04.2017"
-  //     }
-  //   ]
-  // }
-  // const params = {
-  //   mpbarcode: this.scannedSite['barcode'],
-  //   palletbarcode: this.task.pallet,
-  //   waresSet: [
-  //     {
-  //       scannedBarcode: '',
-  //       WCODE: this.scannedWare['data']['code'],
-  //       WNAME: this.scannedWare['data']['name'],
-  //       customAmount: amount,
-  //       bestbeforedate: ''
-  //     }
-  //   ]
-  // };
 
   // error TS2559: Type '{ code: string; name: string; }[]' has no properties in common with type
   // тип данных не соответствует
@@ -219,4 +215,6 @@ export class UrlModels {
   // statusText: "Unknown Error"
   // url: "http://api.travelpayouts.com/data/en/cities.json"
   // __proto__: HttpResponseBase
+
+  public static Countries = 'http://api.travelpayouts.com/data/ru/countries.json';
 }
