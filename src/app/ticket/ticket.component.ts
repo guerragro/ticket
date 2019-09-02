@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TicketService } from '../service/ticket.service';
 import { TicketModel, TicketInterface } from '../model';
 
+import { ScannerStore } from '../service/store';
+
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
@@ -9,6 +11,7 @@ import { TicketModel, TicketInterface } from '../model';
 })
 export class TicketComponent implements OnInit {
 
+  // ЗДЕСЬ ДОЛЖНЫ БЫТЬ ТОЛЬКО ФУНКЦИИ
   origin: string;
   destination: string;
   departureDate: any;
@@ -17,35 +20,30 @@ export class TicketComponent implements OnInit {
   public ticketModel: TicketModel;
   arr: any;
   model: any[] = [];
+
   constructor(
     public ticketService: TicketService,
+    public scannerStore: ScannerStore
   ) {
   }
 
   ngOnInit() {
+    // получаем список городов
+    this.ticketService.getDataCities().subscribe(
+      res => this.find(res),
+      err => console.log(err)
+    );
+    //
     this.ticketService.getPriceList().subscribe(
       (res: any) => console.log(res),
       err => console.log(err)
     );
-    // получаем список стран
-    this.ticketService.getDataCountries().subscribe(
-      res => this.find(res),
-      err => console.log(err)
-    );
-    // получаем список городов
-    this.ticketService.getDataCities().subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    );
-    // this.ticketService.getCheapTik().subscribe(
-    //   res => console.log(res),
-    //   err => console.log(err)
-    // );
   }
 
   find(ans) {
-    this.arr = JSON.stringify(ans);
-    // console.log(this.arr);
+    // console.log(ans);
+    // this.arr = ans;
+    this.scannerStore.CitiesList(ans);
   }
 
   search(event) {
@@ -53,9 +51,20 @@ export class TicketComponent implements OnInit {
       return;
     } else {
       this.id++;
-      // создаем новый объект
-      this.ticketModel = new TicketModel(this.origin, this.destination, this.departureDate, this.arrivalDate, this.id);
-      console.log(this.ticketModel);
+      // поиск кода города
+      // this.origin = this.arr.filter(a => a.name === this.origin);
+      // this.destination = this.arr.filter(a => a.name === this.destination);
+      // console.log(this.origin, this.destination);
+      // console.log(this.origin[0]['code'], this.destination['code']);
+      // создаем новый объект в массиве
+      // все запросы
+      this.ticketModel = new TicketModel(this.origin[0]['code'], this.destination[0]['code'], this.departureDate, this.arrivalDate, this.id);
+      console.log(typeof this.ticketModel);
+      // this.ticketService.getDataMonth(this.ticketModel[0]).subscribe(
+      //   res => console.log(res),
+      //   err => console.log(err)
+      // );
+      // console.log(this.ticketModel[0]);
     }
     // добавляем в массив
     this.model.push(this.ticketModel);

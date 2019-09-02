@@ -109,6 +109,28 @@ export class UrlModels {
   // Возвращает самые дешевые билеты безпересадок, а также с 1 или 2 пересадками по выбранному маршруту с фильтрами.
   public static CheapTik = 'http://api.travelpayouts.com/v1/prices/cheap';
 
+  // Возвращает самый дешевый билет без пересадок для выбранного направления с фильтрами по датам вылета и возвращения.
+  public static PriceTik = 'http://api.travelpayouts.com/v1/prices/direct';
+
+  // Билеты из города на любое число месяца
+  public static DataMonth = 'http://api.travelpayouts.com/v1/prices/calendar';
+
+  // origin — IATA код города вылета. IATA код указывается буквами верхнего регистра, например, MOW.
+  // destination — IATA код города назначения. IATA код указывается буквами верхнего регистра, например, MOW.
+  // depart_date — Месяц вылета (в формате YYYY-MM). По умолчанию передается текущий месяц. Если не передать параметр и до конца месяца меньше недели - будет использована дата следующего месяца в формате YYYY-MM. Если передать пустую строку, то будут выведены результаты на год вперёд.
+  // return_date (опционально) — Месяц возвращения (в формате YYYY-MM). Если не передать параметр, но передать depart_date, то выведутся билеты на указанный там месяц. Если передать пустую строку в depart_date и передать return_date, то он выступит ограничителем даты и выведет билеты до конца месяца return_date с текущей даты.
+  // calendar_type — поле, по которому будет строиться календарь. Одно из двух значений: departure_date или return_date.
+  // trip_duration (опционально) — Длительность пребывания в городе назначения.
+  // token — Индивидуальный токен доступа.
+  // currency — Валюта ответа (USD, EUR, RUB). Значение по умолчанию — rub.
+
+  // origin — IATA код города вылета. IATA код указывается буквами верхнего регистра, например MOW.
+  // destination — IATA код города назначения (укажите "-" для любых направлений). IATA код указывается буквами верхнего регистра, например MOW.
+  // depart_date (не обязательно) — месяц вылета (YYYY-MM).
+  // return_date (не обязательно) — месяц возвращения (YYYY-MM).
+  // currency — Валюта ответа (USD, EUR, RUB). Значение по умолчанию — rub.
+  // token — Индивидуальный токен доступа.
+
   // Параметры запроса
   // origin — IATA код города отправления. Заглавными буквами.
   // destination — IATA код города назначения (для всех городов "-").
@@ -161,7 +183,7 @@ export class UrlModels {
   // }
 
   // Данные города в формате JSON
-  public static Cities = 'http://api.travelpayouts.com/data/en/cities.json';
+  public static Cities = 'http://api.travelpayouts.com/data/ru/cities.json';
 
   // Параметры ответа
   // code — IATA-code страны.
@@ -187,34 +209,10 @@ export class UrlModels {
   //     }
   //   ]
 
-  // error TS2559: Type '{ code: string; name: string; }[]' has no properties in common with type
-  // тип данных не соответствует
-  // { headers?: HttpHeaders | { [header: string]: string | string[]; };
-  // url {headers: {''}: ''}; ''; {['']: ''}
-  // заголовок
-  // observe?: "body"; params?: HttpParams | { [param: string]: string | string[]; };
-  // reportProgress?: boolean; responseType?: "json"; withCredentials?: boolean; }'
-  // {headers: {'*': ''}}.
+  // Список стран (неопязательный)
+  // public static Countries = 'http://api.travelpayouts.com/data/ru/countries.json';
 
-  // const httpOptions = {
-  //   headers: new HttpHeaders({
-  //     'Authorization': 'my-auth-token'
-  //   })
-  // };
-  //     {'Access-Control-Allow-Origin': '*'},
-  //     {'Access-Control-Allow-Headers': '*'},
-  //     {'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTION'}
+  public static Popular = 'http://api.travelpayouts.com/v1/city-directions';
 
-  // HttpErrorResponse
-  // error: ProgressEvent {isTrusted: true, lengthComputable: false, loaded: 0, total: 0, type: "error", …}
-  // headers: HttpHeaders {normalizedNames: Map(0), lazyUpdate: null, headers: Map(0)}
-  // message: "Http failure response for http://api.travelpayouts.com/data/en/cities.json: 0 Unknown Error"
-  // name: "HttpErrorResponse"
-  // ok: false
-  // status: 0
-  // statusText: "Unknown Error"
-  // url: "http://api.travelpayouts.com/data/en/cities.json"
-  // __proto__: HttpResponseBase
-
-  public static Countries = 'http://api.travelpayouts.com/data/ru/countries.json';
+  public static Special = 'http://api.travelpayouts.com/v2/prices/special-offers?token=49679098347c457387656573a8437d2d';
 }

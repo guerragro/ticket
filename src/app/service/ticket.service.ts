@@ -17,8 +17,11 @@ export class TicketService {
     const params = {
         origin: 'VVO',
         destination: 'SEL',
-        year: '2019',
-        sorting: 'price',
+        beginning_of_period: '2019-10-01',
+        period_type: 'month',
+        // sorting: 'price',
+        month: '10',
+        limit: '50',
         token: '49679098347c457387656573a8437d2d'
       };
     return this.http.get(UrlModels.PriceList, {params: (params)});
@@ -54,10 +57,28 @@ export class TicketService {
     //   'cities.json', { params: (params)});
     return this.http.get(UrlModels.Cities, {params: (params)});
   }
-  getDataCountries() {
+
+  getDataMonth() {
+    // const params = Object.assign(
+    //   {token: '49679098347c457387656573a8437d2d'}, data
+    // );
     const params = {
+      origin: 'VVO',
+      destination: 'BJS',
+      // depart_date: '2019-10',
       token: '49679098347c457387656573a8437d2d'
     };
-    return this.http.get(UrlModels.Countries, {params: (params)});
+    return this.http.get(UrlModels.DataMonth, {params: (params)});
+  }
+  getDataSpecial() {
+    return this.http.get(UrlModels.Special);
+  }
+
+  getPopular() {
+    const params = {
+      origin: 'VVO',
+      token: '49679098347c457387656573a8437d2d'
+    };
+    return this.http.get(UrlModels.Popular, {params: (params)});
   }
 }

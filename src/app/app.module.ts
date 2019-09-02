@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { TicketService } from './service/ticket.service';
+import { ScannerStore } from './service/store';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,13 @@ import { TicketService } from './service/ticket.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     TicketService,
-    HttpClientModule
+    HttpClientModule,
+    // регистрируем стор
+    ScannerStore
   ],
   bootstrap: [AppComponent]
 })

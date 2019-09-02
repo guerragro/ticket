@@ -8,8 +8,8 @@ export class TicketModel {
   constructor(
     public origin: string,
     public destination: string,
-    public departureDate: number,
-    public arrivalDate: number,
+    public depart_date: number,
+    public return_date: number,
     public id?: number,
   ) {}
 }
