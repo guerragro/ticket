@@ -13,6 +13,17 @@ export class TicketService {
   ) {
   }
 
+  getDataCities() {
+    const params = {
+      token: '49679098347c457387656573a8437d2d'
+    };
+    // const headers = new HttpHeaders();
+    // headers.append('Access-Control-Allow-Origin : *', '');
+    // return this.http.get('http://api.travelpayouts.com/data/en/' +
+    //   'cities.json', { params: (params)});
+    return this.http.get(UrlModels.Cities, {params: (params)});
+  }
+
   public getPriceList() {
     const params = {
         origin: 'VVO',
@@ -26,7 +37,6 @@ export class TicketService {
       };
     return this.http.get(UrlModels.PriceList, {params: (params)});
   }
-
 
   public getCheapTik() {
     const params = {
@@ -43,21 +53,6 @@ export class TicketService {
     return this.http.get(UrlModels.CheapTik, {params: (params)});
   }
 
-  getDataCities() {
-    const headers = {
-      'Access-Control-Allow-Origin' : '*',
-      'Access-Control-Allow-Credentials': 'true'
-    };
-    const params = {
-      token: '49679098347c457387656573a8437d2d'
-    };
-    // const headers = new HttpHeaders();
-    // headers.append('Access-Control-Allow-Origin : *', '');
-    // return this.http.get('http://api.travelpayouts.com/data/en/' +
-    //   'cities.json', { params: (params)});
-    return this.http.get(UrlModels.Cities, {params: (params)});
-  }
-
   getDataMonth() {
     // const params = Object.assign(
     //   {token: '49679098347c457387656573a8437d2d'}, data
@@ -70,6 +65,7 @@ export class TicketService {
     };
     return this.http.get(UrlModels.DataMonth, {params: (params)});
   }
+
   getDataSpecial() {
     return this.http.get(UrlModels.Special);
   }

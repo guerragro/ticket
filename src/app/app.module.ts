@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { TicketService } from './service/ticket.service';
-import { ScannerStore } from './service/store';
+import { ScannerStore } from './mobx/store';
+import { TicketStore } from './mobx/TicketStore';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ScannerStore } from './service/store';
     TicketService,
     HttpClientModule,
     // регистрируем стор
-    ScannerStore
+    ScannerStore,
+    TicketStore
   ],
   bootstrap: [AppComponent]
 })

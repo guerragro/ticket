@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { action, observable, computed } from 'mobx';
 
-import { TicketService } from './ticket.service';
+import { TicketService } from '../service/ticket.service';
 import { TicketModel } from '../model';
 
 @Injectable()

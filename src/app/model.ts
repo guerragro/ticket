@@ -1,9 +1,5 @@
 export class TicketModel {
-  // origin: string;
-  // destination: string;
-  // departureDate: number;
-  // arrivalDate: number;
-  // id?: number;
+
   // то как будет выглядит наш объект
   constructor(
     public origin: string,
@@ -11,6 +7,13 @@ export class TicketModel {
     public depart_date: number,
     public return_date: number,
     public id?: number,
+  ) {}
+}
+
+export class CitiesModel {
+  constructor(
+    public name: string,
+    public age: number
   ) {}
 }
 

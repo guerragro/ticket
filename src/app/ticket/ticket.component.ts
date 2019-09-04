@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from '../service/ticket.service';
 import { TicketModel, TicketInterface } from '../model';
+import { fromMobx } from 'ngx-mobx';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/do';
 
-import { ScannerStore } from '../service/store';
+import { ScannerStore } from '../mobx/store';
+import { TicketStore } from '../mobx/TicketStore';
 
 @Component({
   selector: 'app-ticket',
@@ -18,32 +22,23 @@ export class TicketComponent implements OnInit {
   arrivalDate: any;
   id: number = 0;
   public ticketModel: TicketModel;
-  arr: any;
-  model: any[] = [];
+  model: TicketModel[] = [];
 
   constructor(
-    public ticketService: TicketService,
-    public scannerStore: ScannerStore
-  ) {
-  }
+    public _ticketService: TicketService,
+    public _ticketStore: TicketStore
+  ) {}
 
   ngOnInit() {
-    // получаем список городов
-    this.ticketService.getDataCities().subscribe(
-      res => this.find(res),
+    this._ticketService.getPopular().subscribe(
+      res => console.log(res),
       err => console.log(err)
     );
-    //
-    this.ticketService.getPriceList().subscribe(
-      (res: any) => console.log(res),
+    // // получаем список городов
+    this._ticketService.getDataCities().subscribe(
+      res => console.log(res),
       err => console.log(err)
     );
-  }
-
-  find(ans) {
-    // console.log(ans);
-    // this.arr = ans;
-    this.scannerStore.CitiesList(ans);
   }
 
   search(event) {
