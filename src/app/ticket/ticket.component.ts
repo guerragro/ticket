@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/do';
 
 import { TicketStore } from '../mobx/TicketStore';
+import {Store} from '@ngrx/store';
+import {AppState} from '../redux/app.state';
 
 @Component({
   selector: 'app-ticket',
@@ -29,7 +31,8 @@ export class TicketComponent implements OnInit {
 
   constructor(
     public _ticketService: TicketService,
-    public _ticketStore: TicketStore
+    public _ticketStore: TicketStore,
+    public store: Store<AppState>
   ) {
     // this._ticketStore.getDataCities();
     // this._ticketStore.getDataPrice();
@@ -46,9 +49,12 @@ export class TicketComponent implements OnInit {
     //   res => console.log(res),
     //   err => console.log(err)
     // );
-    this._ticketService.getPriceList().subscribe(
-      res => this.bilet = res['data'],
-      err => console.log(err)
+    // this._ticketService.getPriceList().subscribe(
+    //   res => this.bilet = res['data'],
+    //   err => console.log(err)
+    // );
+    this.store.select('updateTicket').subscribe(
+      res => console.log(res)
     );
   }
   search(event) {
