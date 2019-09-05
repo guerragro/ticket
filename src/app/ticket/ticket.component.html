@@ -33,9 +33,35 @@
          (click)="search($event.target.value)">
 </div>
 <!--(changeOn)-->
-<div class="container">
+<div class="container" *ngIf="this.bilet">
   <div class="row">
     <div class="col-lg-3 col-sm-3">Фильтры</div>
-    <div class="col-lg-9 col-sm-9">Список |Варианты полетов | Дешевый перелет</div>
+    <div class="col-lg-9 col-sm-9">
+      <div class="row" *ngFor="let tik of bilet">
+        <div class="col-lg-3 col-sm-3">
+          <table>
+            <tr>
+              <td>
+                Цена: {{tik.value}}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-lg-9 col-sm-9">Список |Варианты полетов | Дешевый перелет
+          <table>
+            <tr>
+              <td>{{tik.origin}}</td>
+              <td>{{tik.duration/60}}</td>
+              <td>{{tik.destination}}</td>
+            </tr>
+            <tr>
+              <td>{{tik.depart_date}}</td>
+              <td></td>
+              <td>{{tik.return_date}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

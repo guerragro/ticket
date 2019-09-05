@@ -9,25 +9,38 @@ import {CitiesModel, TicketModel} from '../model';
 export class TicketStore {
 
   constructor(
-    private ticketService: TicketService
+    private _ticketService: TicketService
   ) {}
 
-  @observable cities: CitiesModel[] = [
-    new CitiesModel('Khabarovsk', 195),
-    new CitiesModel('Linengrad', 250)
-  ];
-  // @observable cities: any = [];
+  // @observable citiesAll: CitiesModel[] = [
+  //   new CitiesModel('Khabarovsk', 195),
+  //   new CitiesModel('Linengrad', 250)
+  // ];
+  @observable cities;
 
   @observable ticket;
 
-  @action getDataCities() {
-    this.ticketService.getDataCities().subscribe(
+  @action getDataPrice() {
+    this._ticketService.getPriceList().subscribe(
       res => {
-        // this.cities = res;
+        this.ticket = res['data'];
+        console.log(this.ticket);
+      },
+      err => console.log(err)
+    );
+  }
+
+  @action getDataCities() {
+    this._ticketService.getDataCities().subscribe(
+      res => {
+        this.cities = res;
         // console.log(this.cities);
       },
       err => console.log(err)
     );
+  }
+  @action getUpdateTicket() {
+
   }
 
   @computed get DataCities() {
