@@ -15,6 +15,7 @@ export class UpdateTicket implements Action {
   readonly type = TICKET_ACTION.UPDATE_TICKET;
 
   constructor(
+    // payload некоторая новая информация
     public payload: TicketModel,
   ) {}
 

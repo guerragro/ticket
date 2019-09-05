@@ -1,7 +1,9 @@
 import {TICKET_ACTION, UpdateTicket} from './ticket.action';
 import {TicketModel} from '../model';
 
+
 const initialState = {
+  // изначальное состояние
   cities: [
     {
       name: 'Khabarovsk'
@@ -16,8 +18,10 @@ const initialState = {
   ]
 };
 
+// редьюсер это просто функция, которая берет action and state и выдает новое состоянии
 export function ticketReducer(state = initialState, action: UpdateTicket) {
 
+  // в зависимости от дейсвия выбирает, что сделать
   switch (action.type) {
     case TICKET_ACTION.UPDATE_TICKET:
       return {

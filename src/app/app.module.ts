@@ -22,6 +22,7 @@ import {ticketReducer} from './redux/ticket.reducer';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    // регистрируем редакс и все редьюсеры
     StoreModule.forRoot({updateTicket: ticketReducer})
   ],
   providers: [
