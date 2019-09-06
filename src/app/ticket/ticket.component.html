@@ -1,63 +1,64 @@
 <div style="text-align: center">Поиск авиабилетов</div>
-<div class="container">Меню Поиска
-  <div class="row">
-    <div class="col-lg-3 col-sm-3">
-      <input type="text"
-             class="form-control"
-             [(ngModel)]="origin"
-             placeholder="Страна отбытия">
-    </div>
-    <div class="col-lg-3 col-sm-3">
-      <input type="text"
-             class="form-control"
-             [(ngModel)]="destination"
-             placeholder="Страна прибытия">
-    </div>
-    <div class="col-lg-3 col-sm-3">
-      <input type="date"
-             class="form-control"
-             [(ngModel)]="departureDate"
-             placeholder="Дата вылета">
-    </div>
-    <div class="col-lg-3 col-sm-3">
-      <input type="date"
-             class="form-control"
-             [(ngModel)]="arrivalDate"
-             placeholder="Дата прилета">
-    </div>
-  </div>
-</div>
-<div style="text-align: center">
-  <input type="button"
-         value="Найти"
-         (click)="search($event.target.value)">
-</div>
+<!--<div class="container">Меню Поиска-->
+<!--  <div class="row">-->
+<!--    <div class="col-lg-3 col-sm-3">-->
+<!--      <input type="text"-->
+<!--             class="form-control"-->
+<!--             [(ngModel)]="origin"-->
+<!--             placeholder="Страна отбытия">-->
+<!--    </div>-->
+<!--    <div class="col-lg-3 col-sm-3">-->
+<!--      <input type="text"-->
+<!--             class="form-control"-->
+<!--             [(ngModel)]="destination"-->
+<!--             placeholder="Страна прибытия">-->
+<!--    </div>-->
+<!--    <div class="col-lg-3 col-sm-3">-->
+<!--      <input type="date"-->
+<!--             class="form-control"-->
+<!--             [(ngModel)]="departureDate"-->
+<!--             placeholder="Дата вылета">-->
+<!--    </div>-->
+<!--    <div class="col-lg-3 col-sm-3">-->
+<!--      <input type="date"-->
+<!--             class="form-control"-->
+<!--             [(ngModel)]="arrivalDate"-->
+<!--             placeholder="Дата прилета">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div style="text-align: center">-->
+<!--  <input type="button"-->
+<!--         value="Найти"-->
+<!--         (click)="search($event.target.value)">-->
+<!--</div>-->
 <!--(changeOn)-->
-<div class="container" *ngIf="this.bilet">
+<app-search-ticket></app-search-ticket>
+<div class="container" *ngIf="this.tickets">
   <div class="row">
     <div class="col-lg-3 col-sm-3">Фильтры</div>
-    <div class="col-lg-9 col-sm-9">
-      <div class="row" *ngFor="let tik of bilet">
+    <div class="col-lg-9 col-sm-9">Список |Варианты полетов | Дешевый перелет
+      <div class="row" *ngFor="let a of ticket">
         <div class="col-lg-3 col-sm-3">
           <table>
             <tr>
               <td>
-                Цена: {{tik.value}}
+                Цена: {{a.value}}
               </td>
             </tr>
           </table>
         </div>
-        <div class="col-lg-9 col-sm-9">Список |Варианты полетов | Дешевый перелет
+        <div class="col-lg-9 col-sm-9">
           <table>
             <tr>
-              <td>{{tik.origin}}</td>
-              <td>{{tik.duration/60}}</td>
-              <td>{{tik.destination}}</td>
+              <td>{{a.origin}}</td>
+              <td>{{a.duration/60}}</td>
+              <td>{{a.destination}}</td>
             </tr>
             <tr>
-              <td>{{tik.depart_date}}</td>
+              <td>{{a.depart_date}}</td>
               <td></td>
-              <td>{{tik.return_date}}</td>
+              <td>{{a.return_date}}</td>
             </tr>
           </table>
         </div>

@@ -37,11 +37,11 @@ export class TicketService {
   //   return this.http.get(UrlModels.Special);
   // }
   //
-  // getPopular() {
-  //   const params = {
-  //     origin: 'VVO',
-  //     token: '49679098347c457387656573a8437d2d'
-  //   };
-  //   return this.http.get(UrlModels.Popular, {params: (params)});
-  // }
+  getPopular() {
+    const params = {
+      origin: 'VVO',
+      token: '49679098347c457387656573a8437d2d'
+    };
+    return this.http.get(UrlModels.Popular, {params: (params)});
+  }
 }

@@ -1,22 +1,48 @@
-// const action = {
-//   type: 'UPDATE',
-//
-//   payload: {}
-// }
 import { Action } from '@ngrx/store';
 import { TicketModel } from '../model';
-import {TicketService} from '../service/ticket.service';
+import { TicketService } from '../service/ticket.service';
 
 export namespace TICKET_ACTION {
-  export const UPDATE_TICKET = 'UPDATE_TICKET';
+  export const SEARCH_TICKET = 'SEARCH_TICKET';
+  export const SPECIAL_TICKET = 'SPECIAL_TICKET';
+  export const CITIES = 'CITIES';
 }
 
-export class UpdateTicket implements Action {
-  readonly type = TICKET_ACTION.UPDATE_TICKET;
+export class SearchTicket implements Action {
+  readonly type = TICKET_ACTION.SEARCH_TICKET;
+
+  // public service: TicketService;
+  constructor(
+    public payload: any
+    // payload некоторая новая информация
+  ) {}
+  // hello() {
+  //   this.service.getPriceList().subscribe(
+  //     res => console.log(res),
+  //     err => console.log(err)
+  //   );
+  // }
+}
+
+export class SpecialTicket implements Action {
+  readonly type = TICKET_ACTION.SPECIAL_TICKET;
 
   constructor(
-    // payload некоторая новая информация
     public payload: TicketModel,
   ) {}
+}
 
+export class Cities implements Action {
+  readonly type = TICKET_ACTION.CITIES;
+
+  public service: TicketService;
+
+  constructor(
+    public payload,
+  ) {
+    // this.service.getDataCities().subscribe(
+    //   (res: []) => this.payload = res,
+    //   err => console.log(err)
+    // );
+}
 }

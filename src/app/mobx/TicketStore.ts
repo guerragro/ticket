@@ -43,7 +43,7 @@ export class TicketStore {
 
   }
 
-  @computed get DataCities() {
-    return this.cities;
-  }
+  // @computed get DataCities() {
+  //   return this.cities;
+  // }
 }

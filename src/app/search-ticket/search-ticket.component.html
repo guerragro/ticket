@@ -1,0 +1,33 @@
+<div class="container">Меню Поиска
+  <div class="row">
+    <div class="col-lg-3 col-sm-3">
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="origin"
+             placeholder="Страна отбытия">
+    </div>
+    <div class="col-lg-3 col-sm-3">
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="destination"
+             placeholder="Страна прибытия">
+    </div>
+    <div class="col-lg-3 col-sm-3">
+      <input type="date"
+             class="form-control"
+             [(ngModel)]="departureDate"
+             placeholder="Дата вылета">
+    </div>
+    <div class="col-lg-3 col-sm-3">
+      <input type="date"
+             class="form-control"
+             [(ngModel)]="arrivalDate"
+             placeholder="Дата прилета">
+    </div>
+  </div>
+</div>
+<div style="text-align: center">
+  <input type="button"
+         value="Найти"
+         (click)="search($event.target.value)">
+</div>

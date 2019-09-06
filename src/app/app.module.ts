@@ -10,12 +10,14 @@ import { TicketComponent } from './ticket/ticket.component';
 import { TicketService } from './service/ticket.service';
 import { TicketStore } from './mobx/TicketStore';
 import {ticketReducer} from './redux/ticket.reducer';
+import { SearchTicketComponent } from './search-ticket/search-ticket.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TicketComponent,
+    SearchTicketComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,7 @@ import {ticketReducer} from './redux/ticket.reducer';
     FormsModule,
     HttpClientModule,
     // регистрируем редакс и все редьюсеры
-    StoreModule.forRoot({updateTicket: ticketReducer})
+    StoreModule.forRoot({searchTicket: ticketReducer})
   ],
   providers: [
     TicketService,

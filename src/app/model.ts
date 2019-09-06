@@ -6,7 +6,6 @@ export class TicketModel {
     public destination: string,
     public depart_date: string,
     public return_date: string,
-    public value: string,
     public id?: number,
   ) {}
 }
