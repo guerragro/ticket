@@ -21,13 +21,13 @@ export class TicketStore {
   @observable ticket;
 
   @action getDataPrice() {
-    this._ticketService.getPriceList().subscribe(
-      res => {
-        this.ticket = res['data'];
-        console.log(this.ticket);
-      },
-      err => console.log(err)
-    );
+    // this._ticketService.getPriceList().subscribe(
+    //   res => {
+    //     this.ticket = res['data'];
+    //     console.log(this.ticket);
+    //   },
+    //   err => console.log(err)
+    // );
   }
 
   @action getDataCities() {

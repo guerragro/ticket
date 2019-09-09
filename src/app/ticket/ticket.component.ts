@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from '../service/ticket.service';
-import {TicketModel, TicketInterface, CitiesModel} from '../model';
+import { TicketModel, TicketInterface, CitiesModel } from '../model';
 import { fromMobx } from 'ngx-mobx';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/do';
@@ -36,7 +36,6 @@ export class TicketComponent implements OnInit {
 
   constructor(
     public _ticketService: TicketService,
-    public _ticketStore: TicketStore,
     public store: Store<AppState>
   ) {}
 
@@ -45,14 +44,15 @@ export class TicketComponent implements OnInit {
       (res: []) => this.store.dispatch(new Action.Cities(res)),
       err => console.log(err)
     );
-    this.store.select('searchTicket').subscribe(
+    this.store.select('Ticket').subscribe(
       res => {
         this.cities = res['cities'];
-        console.log(this.cities);
-        console.log(res);
+        // console.log(this.cities);
+        // console.log(res);
       }
     );
   }
+
   // search(event) {
   //   if (this.origin == '' && this.destination == '' && this.departureDate == '' && this.arrivalDate == '') {
   //     return;

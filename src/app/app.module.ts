@@ -25,7 +25,7 @@ import { SearchTicketComponent } from './search-ticket/search-ticket.component';
     FormsModule,
     HttpClientModule,
     // регистрируем редакс и все редьюсеры
-    StoreModule.forRoot({searchTicket: ticketReducer})
+    StoreModule.forRoot({Ticket: ticketReducer})
   ],
   providers: [
     TicketService,
