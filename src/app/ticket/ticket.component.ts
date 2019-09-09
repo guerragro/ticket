@@ -38,43 +38,20 @@ export class TicketComponent implements OnInit {
     public _ticketService: TicketService,
     public _ticketStore: TicketStore,
     public store: Store<AppState>
-  ) {
-    // this._ticketStore.getDataCities();
-    // this._ticketStore.getDataPrice();
-    // this.cities$ = fromMobx(() => _ticketStore.DataCities);
-    // this.cities$.subscribe(
-    //   res => console.log(res)
-    // );
-    // console.log(this.cities$);
-    // console.log(this.cities);
-  }
+  ) {}
 
   ngOnInit() {
-    // this.store.select('Cities');
-    // this._ticketState = this.store.select('UpdateTicket');
-    // console.log(this._ticketState);
-    // this._ticketService.getDataCities().subscribe(
-    //   res => console.log(res),
-    //   err => console.log(err)
-    // );
-    // this._ticketService.getPriceList().subscribe(
-    //   res => this.bilet = res['data'],
-    //   err => console.log(err)
-    // );
-    // this._ticketService.getDataCities().subscribe(
-    //   (res: []) => this.store.dispatch(new Action.Cities(res)),
-    //   err => console.log(err)
-    // )
-    this.store.dispatch(new Action.Cities());
+    this._ticketService.getDataCities().subscribe(
+      (res: []) => this.store.dispatch(new Action.Cities(res)),
+      err => console.log(err)
+    );
     this.store.select('searchTicket').subscribe(
       res => {
-                // this.tickets = res['ticket'];
-                console.log(res);
+        this.cities = res['cities'];
+        console.log(this.cities);
+        console.log(res);
       }
     );
-    // this._ticketService.getPopular().subscribe(
-    //   res => console.log(res),
-    // );
   }
   // search(event) {
   //   if (this.origin == '' && this.destination == '' && this.departureDate == '' && this.arrivalDate == '') {
