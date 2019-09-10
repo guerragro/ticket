@@ -39,17 +39,12 @@ export class Cities implements Action {
   ) {}
 }
 
-// export class Test implements Action {
-//   readonly type = TICKET_ACTION.TEST;
-//
-//   public service: TicketService;
-//
-//   constructor(
-//     payload,
-//     test:
-//   ) {
-//     this.service
-//   }
-// }
+export class Test implements Action {
+  readonly type = TICKET_ACTION.TEST;
 
-export type Action = SearchTicket | SpecialTicket | Cities;
+  public service: TicketService;
+
+  constructor() {}
+}
+
+export type Action = SearchTicket | SpecialTicket | Cities | Test;

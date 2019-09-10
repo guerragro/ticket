@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { TicketModel } from '../model';
-import { Store } from '@ngrx/store';
-import { AppState } from '../redux/app.state';
-
-import * as Action from '../redux/ticket.action';
+import { CitiesModel, TicketModel } from '../model';
 import {TicketService} from '../service/ticket.service';
-import {Observable} from 'rxjs';
-import {State} from '../redux/ticket.reducer';
 
-import * as TicketState from '../redux/index';
+import { Store } from '@ngrx/store';
+import {Observable} from 'rxjs';
+
+import * as fromAction from '../redux/ticket.action';
+import * as appState from '../redux/app.state';
 
 @Component({
   selector: 'app-search-ticket',
@@ -23,15 +21,19 @@ export class SearchTicketComponent implements OnInit {
   arrivalDate: any;
   id: number = 0;
   // private ticketModel: TicketModel;
-  cities$: Observable<State[]>;
+  // cities$: Observable<State[]>;
+  cities$: Observable<CitiesModel[]>;
+  ticket
 
   constructor(
     // public store: Store<AppState>,
     public _ticketService: TicketService,
-    public store: Store<TicketState.State>
+    public store: Store<appState.State>
   ) {
-    this.cities$ = this.store.select(TicketState.getCities);
-    console.log(this.cities$);
+    // this.cities$ = this.store.select(TicketState.getStateCities);
+    // console.log(this.cities$);
+    // this.ticket = this.store.select(appState.getStateTicket);
+    // console.log(this.ticket);
   }
 
   ngOnInit() {
@@ -48,11 +50,10 @@ export class SearchTicketComponent implements OnInit {
       );
       // const ticketModel = new TicketModel(this.origin, this.destination, this.departureDate, this.arrivalDate, this.id);
       //       // console.log(ticketModel);
-      //       // this.store.dispatch(new Action.SearchTicket({name: 123}));
+      this.store.dispatch(new fromAction.SearchTicket({name: 123}));
       //       // this.store.dispatch(ticketModel);
     }
     // this.model.push(this.ticketModel);
     // console.log(this.model);
   }
-
 }

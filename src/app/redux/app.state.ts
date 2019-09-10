@@ -1,37 +1,14 @@
-import {TicketModel} from '../model';
+import * as fromTicket from './ticket.reducer';
+import {ActionReducer, ActionReducerMap, createSelector, MetaReducer, createFeatureSelector} from '@ngrx/store';
 
-export interface AppState {
-  searchTicket: {
-    // ticket: TicketModel[]
-  };
-  specialTicket: {
-    // ticket: TicketModel[]
-  };
-  cities: {
-  //
-  };
+export interface State {
+  tickets: fromTicket.State;
 }
 
+export const reducer: ActionReducerMap<State> = {
+  tickets: fromTicket.ticketReducer
+};
 
-// import {
-//   ActionReducerMap,
-//   createSelector,
-//   createFeatureSelector,
-//   ActionReducer,
-//   MetaReducer,
-// } from '@ngrx/store';
-//
-// import * as Ticket from './ticket.reducer';
-//
-// export interface State {
-//   tickets: Ticket.State;
-// }
-//
-// export const reducers: ActionReducerMap<State> = {
-//   films: fromFilms.reducer
-// };
-//
-//
 // export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
 //   return function (state: State, action: any): State {
 //     console.log('state', state);
@@ -41,39 +18,16 @@ export interface AppState {
 // }
 //
 // export const metaReducers: MetaReducer<State>[] = [logger];
-//
-//
-// export const getTicketState = createFeatureSelector<fromFilms.State>('films');
-//
-// export const getCities = createSelector(
-//   getTicketState,
-//   fromFilms.getIds,
-// );
-//
-// export const getTicket = createSelector(
-//   getFilmState,
-//   fromFilms.getFilms,
-// );
-//
-// export const getSpecial = createSelector(
-//   getFilmState,
-//   fromFilms.getSelected,
-// );
-//
-// export const getSelectedFilm = createSelector(
-//   getSelected,
-//   getFilms,
-//   (selectedId, films) => {
-//     return {
-//       ...films[selectedId]
-//     };
-//   }
-// );
-//
-// export const getAllFilms = createSelector(
-//   getIds,
-//   getFilms,
-//   (ids, films) => {
-//     return ids.map(id => films[id]);
-//   }
-// );
+
+export const getTicketState = createFeatureSelector<fromTicket.State>('tickets');
+
+export const getStateCities = createSelector(
+  getTicketState,
+  fromTicket.getStateCities
+);
+
+export const getStateTicket = createSelector(
+  getTicketState,
+  fromTicket.getStateTicket
+);
+

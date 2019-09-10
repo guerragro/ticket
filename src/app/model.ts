@@ -10,11 +10,13 @@ export class TicketModel {
   ) {}
 }
 
-export class CitiesModel {
+export interface CitiesModel {
   code: string;
   name: string;
-  currency: string;
-  name_transparante: Object;
+  time_zone: string;
+  name_transparante: {};
+  coordinates: {};
+  cases: {};
 }
 
 export interface TicketInterface {

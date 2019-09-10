@@ -1,9 +1,10 @@
 import {TICKET_ACTION} from './ticket.action';
-import * as Ticket from './ticket.action';
+import * as fromAction from './ticket.action';
 
+// модель изначального изначальное состояние
 export interface State {
   cities: any[];
-  ticket: any[];
+  ticket: number[];
   special: any[];
   view: boolean;
 }
@@ -11,13 +12,13 @@ export interface State {
 const InitialState: State = {
   // изначальное состояние
   cities: [],
-  ticket: [],
+  ticket: [1, 4, 6],
   special: [],
   view: false
 };
 
 // редьюсер это просто функция, которая берет action and state и выдает новое состоянии
-export function ticketReducer(state = InitialState, action: Ticket.Action) {
+export function ticketReducer(state = InitialState, action: fromAction.Action) {
 //   export function ticketReducer(state = initialState, action: Cities) {
 
   // в зависимости от действия выбирает, что сделать
@@ -40,4 +41,5 @@ export function ticketReducer(state = InitialState, action: Ticket.Action) {
   }
 }
 
-export const getCities = (state: State) => state.cities;
+export const getStateCities = (state: State) => state.cities;
+export const getStateTicket = (state: State) => state.ticket;
