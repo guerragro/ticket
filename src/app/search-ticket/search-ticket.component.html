@@ -31,4 +31,4 @@
          value="Найти"
          (click)="search($event.target.value)">
 </div>
-<!--<div>{{this.cities$ | async}}</div>-->
+<!--<div *ngFor="let i of (this.cities$ | async)">{{i['name']}}</div>-->

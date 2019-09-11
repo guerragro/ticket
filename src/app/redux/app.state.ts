@@ -4,7 +4,6 @@ import {ActionReducer, ActionReducerMap, createSelector, MetaReducer, createFeat
 export interface State {
   tickets: fromTicket.State;
 }
-
 export const reducer: ActionReducerMap<State> = {
   tickets: fromTicket.ticketReducer
 };
@@ -31,3 +30,7 @@ export const getStateTicket = createSelector(
   fromTicket.getStateTicket
 );
 
+export const getStateSpecial = createSelector(
+  getTicketState,
+  fromTicket.getStateSpecial
+);
