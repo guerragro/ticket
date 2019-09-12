@@ -1,15 +1,15 @@
 <div style="text-align: center">Поиск авиабилетов</div>
 <app-search-ticket></app-search-ticket>
-<div class="container" *ngIf="this.tickets">
+<div class="container" *ngIf="true">
   <div class="row">
     <div class="col-lg-3 col-sm-3">Фильтры</div>
     <div class="col-lg-9 col-sm-9">Список |Варианты полетов | Дешевый перелет
-      <div class="row" *ngFor="let a of ticket">
+      <div class="row" >
         <div class="col-lg-3 col-sm-3">
           <table>
             <tr>
               <td>
-                Цена: {{a.value}}
+                Цена:
               </td>
             </tr>
           </table>
@@ -17,14 +17,14 @@
         <div class="col-lg-9 col-sm-9">
           <table>
             <tr>
-              <td>{{a.origin}}</td>
-              <td>{{a.duration/60}}</td>
-              <td>{{a.destination}}</td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
             <tr>
-              <td>{{a.depart_date}}</td>
               <td></td>
-              <td>{{a.return_date}}</td>
+              <td></td>
+              <td></td>
             </tr>
           </table>
         </div>

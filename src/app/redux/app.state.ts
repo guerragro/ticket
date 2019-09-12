@@ -1,11 +1,11 @@
-import * as fromTicket from './ticket.reducer';
+import * as fromReducer from './ticket.reducer';
 import {ActionReducer, ActionReducerMap, createSelector, MetaReducer, createFeatureSelector} from '@ngrx/store';
 
 export interface State {
-  tickets: fromTicket.State;
+  tickets: fromReducer.State;
 }
 export const reducer: ActionReducerMap<State> = {
-  tickets: fromTicket.ticketReducer
+  tickets: fromReducer.ticketReducer
 };
 
 // export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
@@ -18,19 +18,20 @@ export const reducer: ActionReducerMap<State> = {
 //
 // export const metaReducers: MetaReducer<State>[] = [logger];
 
-export const getTicketState = createFeatureSelector<fromTicket.State>('tickets');
+// tickets относится к export interface State
+export const getTicketState = createFeatureSelector<fromReducer.State>('tickets');
 
 export const getStateCities = createSelector(
   getTicketState,
-  fromTicket.getStateCities
+  fromReducer.getStateCities
 );
 
 export const getStateTicket = createSelector(
   getTicketState,
-  fromTicket.getStateTicket
+  fromReducer.getStateTicket
 );
 
 export const getStateSpecial = createSelector(
   getTicketState,
-  fromTicket.getStateSpecial
+  fromReducer.getStateSpecial
 );

@@ -1,9 +1,9 @@
 import { Action } from '@ngrx/store';
 import { TicketModel } from '../model';
-import {TicketService} from '../service/ticket.service';
 
 export namespace TICKET_ACTION {
-  export const SEARCH_TICKET = 'SEARCH_TICKET';
+  export const SEARCH_REQTICKET = 'SEARCH_REQTICKET';
+  export const SEARCH_RESTICKET = 'SEARCH_RESTICKET';
   export const SPECIAL_TICKET = 'SPECIAL_TICKET';
   export const CITIES = 'CITIES';
   export const TEST = 'TEST';
@@ -12,9 +12,16 @@ export namespace TICKET_ACTION {
 // export const SPECIAL_TICKET = 'SPECIAL_TICKET';
 // export const CITIES = 'CITIES';
 
-export class SearchTicket implements Action {
-  readonly type = TICKET_ACTION.SEARCH_TICKET;
-  // readonly type = SEARCH_TICKET;
+export class TicketReQ implements Action {
+  readonly type = TICKET_ACTION.SEARCH_REQTICKET;
+  // readonly type = SEARCH_REQTICKET;
+
+  constructor(
+    public payload: any
+  ) {}
+}
+export class TicketReS implements Action {
+  readonly type = TICKET_ACTION.SEARCH_RESTICKET;
 
   constructor(
     public payload: any
@@ -26,7 +33,7 @@ export class SpecialTicket implements Action {
   // readonly type = SPECIAL_TICKET;
 
   constructor(
-    public payload: TicketModel,
+    public payload: any
   ) {}
 }
 
@@ -42,9 +49,7 @@ export class Cities implements Action {
 export class Test implements Action {
   readonly type = TICKET_ACTION.TEST;
 
-  public service: TicketService;
-
   constructor() {}
 }
 
-export type Action = SearchTicket | SpecialTicket | Cities | Test;
+export type Action = TicketReQ | TicketReS | SpecialTicket | Cities | Test;

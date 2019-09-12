@@ -20,6 +20,7 @@ export class SearchTicketComponent implements OnInit {
   departureDate: any;
   arrivalDate: any;
   id: number = 0;
+  checked: boolean;
 
   cities$: Observable<CitiesModel[]>;
   cities;
@@ -30,31 +31,56 @@ export class SearchTicketComponent implements OnInit {
   ) {
     this.cities$ = this.store.select(appState.getStateCities);
     this.cities$.subscribe(res => this.cities = res);
-    console.log(this.cities);
+    // console.log(this.cities);
     // console.log(this.cities$);
   }
 
   ngOnInit() {
   }
 
-  search(event) {
-    if (this.origin === '' && this.destination === '' && this.departureDate === '' && this.arrivalDate === '') {
-      return;
-    } else {
-      this.id++;
-      this._ticketService.getPriceList(new TicketModel(this.origin, this.destination)).subscribe(
-        res => console.log(res),
-        err => console.log(err)
-      );
-      // const ticketModel = new TicketModel(this.origin, this.destination, this.departureDate, this.arrivalDate, this.id);
-      //       // console.log(ticketModel);
-      this.store.dispatch(new fromAction.SearchTicket({name: 123}));
-      //       // this.store.dispatch(ticketModel);
-    }
-    // this.model.push(this.ticketModel);
-    // console.log(this.model);
+  // search(event) {
+  //   if (this.origin === '' && this.destination === '' && this.departureDate === '' && this.arrivalDate === '') {
+  //     return;
+  //   } else {
+  //     this.id++;
+  //     // this._ticketService.getPriceList(new TicketModel(this.origin, this.destination)).subscribe(
+  //     //   res => console.log(res),
+  //     //   err => console.log(err)
+  //     // );
+  //     // const ticketModel = new TicketModel(this.origin, this.destination, this.departureDate, this.arrivalDate, this.id);
+  //     //       // console.log(ticketModel);
+  //     // this.store.select(new fromAction.TicketReQ(new TicketModel(this.origin, this.destination)));
+  //     this._ticketService.getDataMonth(new TicketModel(this.origin, this.destination)).subscribe(
+  //       res => {
+  //         this.store.dispatch(new fromAction.TicketReS(res));
+  //         console.log(res);
+  //       },
+  //       err => console.log(err)
+  //     );
+  //     // this.store.dispatch(new fromAction.Ticket());
+  //     //       // this.store.dispatch(ticketModel);
+  //   }
+  //   // this.model.push(this.ticketModel);
+  //   // console.log(this.model);
+  // }
+
+  // true = цены с партнерским маркетом, false наоборот
+  onToggle(event) {
+    console.log(event.target.checked);
+    this.checked = event.target.checked;
   }
 
 //  если нет прямого вылета, должна срабатывать мой метод
 //
+  search(data) {
+    // получаем авиабилеты на месяц, находим самый дешевый туда обратно
+    this._ticketService.getPriceMonth().subscribe(
+      res => this.checkTicket(res),
+      err => console.log(err)
+    );
+  }
+  checkTicket(data) {
+    console.log(data);
+  }
+
 }

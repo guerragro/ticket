@@ -13,11 +13,17 @@ export class TicketService {
   ) {
   }
 
-  getDataCities() {
-    const params = {
-      token: '49679098347c457387656573a8437d2d'
-    };
-    return this.http.get(UrlModels.Cities, {params: (params)});
+  public getDataMonth(data) {
+    // console.log(data);
+    // const params = {
+    //   origin: 'VVO',
+    //   destination: 'SEL',
+    //   month: 'undefiend',
+    //   token: '49679098347c457387656573a8437d2d'
+    // };
+    const params = Object.assign(data, {token: '49679098347c457387656573a8437d2d'});
+    // console.log(params);
+    return this.http.get(UrlModels.DataMonth, {params: (params)});
   }
   // public getPriceList() {
   //   const params = {
@@ -33,7 +39,7 @@ export class TicketService {
   //   return this.http.get(UrlModels.PriceList, {params: (params)});
   // }
   public getPriceList(data) {
-    const params = data;
+    const params = Object.assign(data, {token: '49679098347c457387656573a8437d2d'});
     console.log(params);
     // const params = {
     //   origin: 'VVO',
@@ -45,7 +51,7 @@ export class TicketService {
     //   limit: '50',
     //   token: '49679098347c457387656573a8437d2d'
     // };
-    return this.http.get(UrlModels.PriceList, {params: (params)});
+    // return this.http.get(UrlModels.PriceList, {params: (params)});
   }
 
   // getSpecial() {
@@ -58,5 +64,27 @@ export class TicketService {
       token: '49679098347c457387656573a8437d2d'
     };
     return this.http.get(UrlModels.Popular, {params: (params)});
+  }
+
+  getPriceMonth() {
+    const params = {
+      origin: 'VVO',
+      destination: 'DPS',
+      depart_date: '2019-10',
+      return_date: '2019-10',
+      token: '49679098347c457387656573a8437d2d'
+    };
+    return this.http.get(UrlModels.PriceMonth, {params: (params)});
+  }
+  // список городов
+  getDataCities() {
+    const params = {
+      token: '49679098347c457387656573a8437d2d'
+    };
+    return this.http.get(UrlModels.Cities, {params: (params)});
+  }
+
+  getDataSpecial() {
+    return this.http.get(UrlModels.Special);
   }
 }

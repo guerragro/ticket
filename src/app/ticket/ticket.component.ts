@@ -26,11 +26,22 @@ export class TicketComponent implements OnInit {
       (res: []) => this.store.dispatch(new fromAction.Cities(res)),
       err => console.log(err)
     );
-    this.store.select(appState.getStateCities).subscribe(
+    // this.store.select(appState.getStateCities).subscribe(
+    //   res => console.log(res)
+    // );
+    this.store.subscribe(
       res => console.log(res)
     );
-    this.store.select(appState.getStateTicket).subscribe(
-      res => console.log(res)
-    );
+    // this._ticketService.getDataSpecial().subscribe(
+    //   res => this.store.dispatch(new fromAction.SpecialTicket(res)),
+    //   err => console.log(err)
+    // );
+    // this.store.select(appState.getStateTicket).subscribe(
+    //   res => console.log(res)
+    // );
+    // this._ticketService.gitDataMonth().subscribe(
+    //   res => console.log(res),
+    //   err => console.log(err)
+    // );
   }
 }
