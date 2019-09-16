@@ -4,8 +4,9 @@ import { fromMobx } from 'ngx-mobx';
 import { Observable } from 'rxjs';
 // import { TicketStore } from '../mobx/TicketStore';
 
-import { Store } from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import * as fromAction from '../redux/ticket.action';
+import * as fromReducer from '../redux/ticket.reducer';
 import * as appState from '../redux/app.state';
 import 'rxjs/add/operator/do';
 
@@ -17,15 +18,12 @@ import 'rxjs/add/operator/do';
 export class TicketComponent implements OnInit {
 
   constructor(
-    public _ticketService: TicketService,
     public store: Store<appState.State>
   ) {}
 
   ngOnInit() {
-    this._ticketService.getDataCities().subscribe(
-      (res: []) => this.store.dispatch(new fromAction.Cities(res)),
-      err => console.log(err)
-    );
+    // как только вызывается этот action, срабатывает effects
+    this.store.dispatch(new fromAction.LoadCities());
     // this.store.select(appState.getStateCities).subscribe(
     //   res => console.log(res)
     // );

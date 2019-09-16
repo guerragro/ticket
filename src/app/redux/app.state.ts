@@ -21,16 +21,15 @@ export const reducer: ActionReducerMap<State> = {
 // tickets относится к export interface State
 export const getTicketState = createFeatureSelector<fromReducer.State>('tickets');
 
+// для получения состояния по городам
 export const getStateCities = createSelector(
   getTicketState,
   fromReducer.getStateCities
 );
-
 export const getStateTicket = createSelector(
   getTicketState,
   fromReducer.getStateTicket
 );
-
 export const getStateSpecial = createSelector(
   getTicketState,
   fromReducer.getStateSpecial

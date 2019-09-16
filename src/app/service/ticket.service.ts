@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UrlModels } from '../api';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
@@ -77,11 +78,11 @@ export class TicketService {
     return this.http.get(UrlModels.PriceMonth, {params: (params)});
   }
   // список городов
-  getDataCities() {
+  getDataCities(): Observable<any> {
     const params = {
       token: '49679098347c457387656573a8437d2d'
     };
-    return this.http.get(UrlModels.Cities, {params: (params)});
+    return this.http.get<any>(UrlModels.Cities, {params: (params)});
   }
 
   getDataSpecial() {

@@ -12,6 +12,8 @@ import { SearchTicketComponent } from './search-ticket/search-ticket.component';
 import { StoreModule } from '@ngrx/store';
 import { ticketReducer } from './redux/ticket.reducer';
 import { reducer } from './redux/app.state';
+import {EffectsModule} from '@ngrx/effects';
+import {TicketEffects} from './redux/effects';
 
 // import { TicketStore } from './mobx/TicketStore';
 
@@ -28,7 +30,8 @@ import { reducer } from './redux/app.state';
     HttpClientModule,
     // регистрируем редакс и все редьюсеры
     // StoreModule.forRoot({Ticket: ticketReducer})
-    StoreModule.forRoot(reducer)
+    StoreModule.forRoot(reducer),
+    EffectsModule.forRoot([TicketEffects])
   ],
   providers: [
     TicketService,

@@ -5,7 +5,8 @@ export namespace TICKET_ACTION {
   export const SEARCH_REQTICKET = 'SEARCH_REQTICKET';
   export const SEARCH_RESTICKET = 'SEARCH_RESTICKET';
   export const SPECIAL_TICKET = 'SPECIAL_TICKET';
-  export const CITIES = 'CITIES';
+  export const LOAD_CITIES = 'CITIES';
+  export const LOAD_CITIES_OK = 'CITIES_OK';
   export const TEST = 'TEST';
 }
 // export const SEARCH_TICKET = 'SEARCH_TICKET';
@@ -37,8 +38,21 @@ export class SpecialTicket implements Action {
   ) {}
 }
 
-export class Cities implements Action {
-  readonly type = TICKET_ACTION.CITIES;
+// export class LoadCities implements Action {
+//   readonly type = TICKET_ACTION.CITIES;
+//   // readonly type = CITIES;
+//
+//   constructor(
+//     public payload: []
+//   ) {}
+// }
+
+export class LoadCities implements Action {
+  readonly type = TICKET_ACTION.LOAD_CITIES;
+}
+
+export class LoadCitiesOk implements Action {
+  readonly type = TICKET_ACTION.LOAD_CITIES_OK;
   // readonly type = CITIES;
 
   constructor(
@@ -52,4 +66,4 @@ export class Test implements Action {
   constructor() {}
 }
 
-export type Action = TicketReQ | TicketReS | SpecialTicket | Cities | Test;
+export type Action = TicketReQ | TicketReS | SpecialTicket | LoadCities | LoadCitiesOk | Test;
