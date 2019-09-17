@@ -27,6 +27,15 @@ export class TicketEffects {
         map(cities => new fromAction.LoadCitiesOk(cities)))),
         // catchError(() => new fromAction.LoadCitiesErr())
       );
+
+  @Effect()
+  loadTicket = this.actions$
+    .pipe(
+      ofType(fromAction.TICKET_ACTION.SEARCH_TICKET),
+      mergeMap(() => this.service.getPriceMonth().pipe(
+        map((ticket: []) => new fromAction.SearchTicketOk(ticket)))
+      )
+    );
 }
 
 //   @Effect()

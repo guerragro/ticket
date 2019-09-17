@@ -74,10 +74,7 @@ export class SearchTicketComponent implements OnInit {
 //
   search(data) {
     // получаем авиабилеты на месяц, находим самый дешевый туда обратно
-    this._ticketService.getPriceMonth().subscribe(
-      res => this.checkTicket(res),
-      err => console.log(err)
-    );
+    this.store.dispatch(new fromAction.SearchTicket());
   }
   checkTicket(data) {
     console.log(data);

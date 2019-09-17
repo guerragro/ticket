@@ -7,7 +7,7 @@ import {Action} from '@ngrx/store';
 export interface State {
   cities?: CitiesModel[];
   ticket?: any;
-  ticketres?: any[];
+  // ticketres?: any[];
   special?: any[];
   view: boolean;
 }
@@ -26,14 +26,14 @@ export function ticketReducer(state = InitialState, action: fromAction.Action) {
       return {
         ...state, special: [...state.special, action.payload]
       };
-    case TICKET_ACTION.SEARCH_REQTICKET:
+    case TICKET_ACTION.SEARCH_TICKET_OK:
       return {
         ...state, ticket: [...state.ticket, action.payload]
       };
-    case TICKET_ACTION.SEARCH_RESTICKET:
-      return {
-        ...state, ticketres: [...state.ticketres, action.payload]
-      };
+    // case TICKET_ACTION.SEARCH_RESTICKET:
+    //   return {
+    //     ...state, ticketres: [...state.ticketres, action.payload]
+    //   };
     // case TICKET_ACTION.LOAD_CITIES:
     //   return {
     //     ...state, cities: action.payload

@@ -2,8 +2,8 @@ import { Action } from '@ngrx/store';
 import { TicketModel } from '../model';
 
 export namespace TICKET_ACTION {
-  export const SEARCH_REQTICKET = 'SEARCH_REQTICKET';
-  export const SEARCH_RESTICKET = 'SEARCH_RESTICKET';
+  export const SEARCH_TICKET_OK = 'SEARCH_TICKET_OK';
+  export const SEARCH_TICKET = 'SEARCH_TICKET';
   export const SPECIAL_TICKET = 'SPECIAL_TICKET';
   export const LOAD_CITIES = 'CITIES';
   export const LOAD_CITIES_OK = 'CITIES_OK';
@@ -13,19 +13,13 @@ export namespace TICKET_ACTION {
 // export const SPECIAL_TICKET = 'SPECIAL_TICKET';
 // export const CITIES = 'CITIES';
 
-export class TicketReQ implements Action {
-  readonly type = TICKET_ACTION.SEARCH_REQTICKET;
-  // readonly type = SEARCH_REQTICKET;
-
-  constructor(
-    public payload: any
-  ) {}
+export class SearchTicket implements Action {
+  readonly type = TICKET_ACTION.SEARCH_TICKET;
 }
-export class TicketReS implements Action {
-  readonly type = TICKET_ACTION.SEARCH_RESTICKET;
-
+export class SearchTicketOk {
+  readonly type = TICKET_ACTION.SEARCH_TICKET_OK;
   constructor(
-    public payload: any
+    public payload: []
   ) {}
 }
 
@@ -47,6 +41,7 @@ export class SpecialTicket implements Action {
 //   ) {}
 // }
 
+// два экшена на загрузку городов
 export class LoadCities implements Action {
   readonly type = TICKET_ACTION.LOAD_CITIES;
 }
@@ -66,4 +61,4 @@ export class Test implements Action {
   constructor() {}
 }
 
-export type Action = TicketReQ | TicketReS | SpecialTicket | LoadCities | LoadCitiesOk | Test;
+export type Action = SearchTicketOk | SearchTicket | SpecialTicket | LoadCities | LoadCitiesOk | Test;
