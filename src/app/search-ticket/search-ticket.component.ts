@@ -26,6 +26,8 @@ export class SearchTicketComponent implements OnInit {
   test3: any;
   arr = [];
   ticket: any;
+  VVO: any;
+  LAX: any;
 
   cities$: Observable<CitiesModel[]>;
   cities;
@@ -83,23 +85,25 @@ export class SearchTicketComponent implements OnInit {
     this.service.getTest(this.origin).subscribe(
       (res: []) => {
         // console.log(res);
-        this.test2 = res['directions'];
-        this.check(this.test2);
+        this.VVO = res['directions'];
       }
-        // this.check(res['directions'])
     );
     this.service.getTest(this.destination).subscribe(
       (res: []) => {
-        this.test3 = res['directions'];
-        this.check(this.test3);
-        // this.check(this.arr, this.test3);
+        this.LAX = res['directions'];
       }
     );
+    setTimeout(() => this.check(this.VVO, this.LAX), 10000);
     // this.check();
   }
-  check(ans) {
-    this.name.push(ans.filter(a => a['direct'] === true));
+  check(a, b) {
+    console.log(a, b);
+    this.name = a.filter(x => b.some(y => x.iata === y.iata));
     console.log(this.name);
+    // this.name.push(ans.filter(a => a['direct'] === true));
+    // console.log(this.name);
+    // this.name = this.VVO.filter(a => this.SEL.some(b => a.name === b.name));
+    // console.log(this.name);
     // this.name.push(ans.filter(a => a['direct'] === true));
     // console.log(this.name);
     // console.log(this.test2, this.test3);
