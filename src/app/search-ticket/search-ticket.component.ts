@@ -21,13 +21,18 @@ export class SearchTicketComponent implements OnInit {
   arrivalDate: any;
   id: number = 0;
   checked: boolean;
+  name: any = [];
+  test2: any;
+  test3: any;
+  arr = [];
+  ticket: any;
 
   cities$: Observable<CitiesModel[]>;
   cities;
 
   constructor(
-    public _ticketService: TicketService,
     public store: Store<appState.State>,
+    public service: TicketService
   ) {
     this.cities$ = this.store.select(appState.getStateCities);
     this.cities$.subscribe(res => this.cities = res);
@@ -74,7 +79,36 @@ export class SearchTicketComponent implements OnInit {
 //
   search(data) {
     // получаем авиабилеты на месяц, находим самый дешевый туда обратно
-    this.store.dispatch(new fromAction.SearchTicket());
+    // this.store.dispatch(new fromAction.SearchTicket());
+    this.service.getTest(this.origin).subscribe(
+      (res: []) => {
+        // console.log(res);
+        this.test2 = res['directions'];
+        this.check(this.test2);
+      }
+        // this.check(res['directions'])
+    );
+    this.service.getTest(this.destination).subscribe(
+      (res: []) => {
+        this.test3 = res['directions'];
+        this.check(this.test3);
+        // this.check(this.arr, this.test3);
+      }
+    );
+    // this.check();
+  }
+  check(ans) {
+    this.name.push(ans.filter(a => a['direct'] === true));
+    console.log(this.name);
+    // this.name.push(ans.filter(a => a['direct'] === true));
+    // console.log(this.name);
+    // console.log(this.test2, this.test3);
+    // this.name = this.test2.filter(x => this.test3.some(y => x.name === y.name));
+    // this.test2 = ans.filter(a => a.direct === true);
+    // this.name.push(this.test2);
+    // this.name.filter(a => console.log(a.name));
+    // this.name.filter(a => a.find(x => a.some(y => x.name === y.name)));
+    // console.log(this.name);
   }
   checkTicket(data) {
     console.log(data);

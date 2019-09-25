@@ -32,15 +32,6 @@ export class SpecialTicket implements Action {
   ) {}
 }
 
-// export class LoadCities implements Action {
-//   readonly type = TICKET_ACTION.CITIES;
-//   // readonly type = CITIES;
-//
-//   constructor(
-//     public payload: []
-//   ) {}
-// }
-
 // два экшена на загрузку городов
 export class LoadCities implements Action {
   readonly type = TICKET_ACTION.LOAD_CITIES;

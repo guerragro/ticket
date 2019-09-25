@@ -52,7 +52,7 @@ export class TicketService {
     //   limit: '50',
     //   token: '49679098347c457387656573a8437d2d'
     // };
-    // return this.http.get(UrlModels.PriceList, {params: (params)});
+    // return this.http.get(UrlModels.PriceList, {headers: (headers)});
   }
 
   // getSpecial() {
@@ -75,6 +75,9 @@ export class TicketService {
       return_date: '2019-10',
       token: '49679098347c457387656573a8437d2d'
     };
+    const headers = {
+      'Access-Control-Allow-Origin': '*'
+    };
     return this.http.get(UrlModels.PriceMonth, {params: (params)});
   }
   // список городов
@@ -87,5 +90,20 @@ export class TicketService {
 
   getDataSpecial() {
     return this.http.get(UrlModels.Special);
+  }
+  // getPriceList() {
+  //   const params = {
+  //     origin: 'VVO',
+  //     destination: 'SEL',
+  //   };
+  //   return this.http.get(UrlModels.PriceList, {params: (params)});
+  // }
+  getTest(data) {
+    const params = {
+      origin_iata: data,
+      one_way: true
+    };
+    return this.http.get('http://map.aviasales.ru/supported_directions.json',
+      {params: (params)});
   }
 }

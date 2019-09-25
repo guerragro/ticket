@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TicketService } from '../service/ticket.service';
 import { fromMobx } from 'ngx-mobx';
 import { Observable } from 'rxjs';
+import { fromEvent } from 'rxjs';
 // import { TicketStore } from '../mobx/TicketStore';
 
 import {select, Store} from '@ngrx/store';
@@ -17,7 +18,10 @@ import 'rxjs/add/operator/do';
 })
 export class TicketComponent implements OnInit {
 
+  name: any;
+
   constructor(
+    public service: TicketService,
     public store: Store<appState.State>
   ) {}
 
@@ -41,5 +45,15 @@ export class TicketComponent implements OnInit {
     //   res => console.log(res),
     //   err => console.log(err)
     // );
+    // this.service.getTest().subscribe(
+    //   res => this.test(res['directions'])
+    // );
   }
+
+  // test(ans) {
+  //   this.name = ans.filter(a => a['direct'] === true);
+  //   console.log(this.name);
+  // }
+
+
 }

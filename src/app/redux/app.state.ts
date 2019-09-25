@@ -1,6 +1,7 @@
 import * as fromReducer from './ticket.reducer';
 import {ActionReducer, ActionReducerMap, createSelector, MetaReducer, createFeatureSelector} from '@ngrx/store';
 
+// получаем состояние из редьюсера
 export interface State {
   tickets: fromReducer.State;
 }
