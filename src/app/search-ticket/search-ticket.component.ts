@@ -77,45 +77,27 @@ export class SearchTicketComponent implements OnInit {
     this.checked = event.target.checked;
   }
 
-//  если нет прямого вылета, должна срабатывать мой метод
-//
+  // как это должно работать, если есть прямой вылет, значит отключаем этот поиск
+  // LAX - Лос Анджелес
+  // DPS - Бали
+  // BKK - Бангкок
+  // логика для получения общих городов вылетов (привести в нормальный внешний вид)
+  // теперь нужно получить самые дешевые вылеты от origin до общего города
   search(data) {
-    // получаем авиабилеты на месяц, находим самый дешевый туда обратно
     // this.store.dispatch(new fromAction.SearchTicket());
     this.service.getTest(this.origin).subscribe(
-      (res: []) => {
-        // console.log(res);
-        this.VVO = res['directions'];
-      }
+      (res: []) => this.VVO = res['directions']
     );
     this.service.getTest(this.destination).subscribe(
-      (res: []) => {
-        this.LAX = res['directions'];
-      }
+      (res: []) => this.LAX = res['directions']
     );
+    // посколько запрос долго обрабатывается нужну таймаут !!!! решить проблему позже
     setTimeout(() => this.check(this.VVO, this.LAX), 10000);
-    // this.check();
   }
   check(a, b) {
-    console.log(a, b);
-    this.name = a.filter(x => b.some(y => x.iata === y.iata));
+    this.VVO = a.filter(x => x.direct === true);
+    this.LAX = b.filter(y => y.direct === true);
+    this.name = this.VVO.filter(x => this.LAX.some(y => x.iata === y.iata));
     console.log(this.name);
-    // this.name.push(ans.filter(a => a['direct'] === true));
-    // console.log(this.name);
-    // this.name = this.VVO.filter(a => this.SEL.some(b => a.name === b.name));
-    // console.log(this.name);
-    // this.name.push(ans.filter(a => a['direct'] === true));
-    // console.log(this.name);
-    // console.log(this.test2, this.test3);
-    // this.name = this.test2.filter(x => this.test3.some(y => x.name === y.name));
-    // this.test2 = ans.filter(a => a.direct === true);
-    // this.name.push(this.test2);
-    // this.name.filter(a => console.log(a.name));
-    // this.name.filter(a => a.find(x => a.some(y => x.name === y.name)));
-    // console.log(this.name);
   }
-  checkTicket(data) {
-    console.log(data);
-  }
-
 }

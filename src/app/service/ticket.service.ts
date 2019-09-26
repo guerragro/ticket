@@ -101,7 +101,7 @@ export class TicketService {
   getTest(data) {
     const params = {
       origin_iata: data,
-      one_way: true
+      one_way: 'true'
     };
     return this.http.get('http://map.aviasales.ru/supported_directions.json',
       {params: (params)});
