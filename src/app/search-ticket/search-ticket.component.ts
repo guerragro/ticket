@@ -36,6 +36,7 @@ export class SearchTicketComponent implements OnInit {
     public store: Store<appState.State>,
     public service: TicketService
   ) {
+    // получения состояния по городам
     this.cities$ = this.store.select(appState.getStateCities);
     this.cities$.subscribe(res => this.cities = res);
     // console.log(this.cities);
@@ -81,7 +82,9 @@ export class SearchTicketComponent implements OnInit {
   // LAX - Лос Анджелес
   // DPS - Бали
   // BKK - Бангкок
-  // логика для получения общих городов вылетов (привести в нормальный внешний вид)
+  // HAV - Гавана
+  // MOW - Москва
+  // найдены общие города для построения маршрута (todo fix)
   // теперь нужно получить самые дешевые вылеты от origin до общего города
   search(data) {
     // this.store.dispatch(new fromAction.SearchTicket());
@@ -96,8 +99,11 @@ export class SearchTicketComponent implements OnInit {
   }
   check(a, b) {
     this.VVO = a.filter(x => x.direct === true);
+    console.log(this.VVO);
     this.LAX = b.filter(y => y.direct === true);
+    console.log(this.LAX);
     this.name = this.VVO.filter(x => this.LAX.some(y => x.iata === y.iata));
+    // this.name.iata храниться общий города
     console.log(this.name);
   }
 }

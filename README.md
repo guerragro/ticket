@@ -15,6 +15,8 @@ https://support.travelpayouts.com/hc/en-us/articles/203956163
   // будет отслеживать список билетов
   // будет менять отраженные данные по билетам
   // делаю запрос выводится список билетов
+  
+  // нужно, чтобы старые запросы сохранялись, и их можно было изменять
 
 npm install --save rxjs-compat
 npm install mobx для action, observable, computed

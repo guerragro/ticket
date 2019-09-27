@@ -31,6 +31,7 @@ export class TicketComponent implements OnInit {
     // this.store.select(appState.getStateCities).subscribe(
     //   res => console.log(res)
     // );
+    // подписка на получение текущего состояния
     this.store.subscribe(
       res => console.log(res)
     );

@@ -62,6 +62,18 @@ export function ticketReducer(state = InitialState, action: fromAction.Action) {
 // }
 
 // редьюсер под поиск билетов
+// export function TicketReducer(state = InitialState, action: Action) {
+//   switch (action.type) {
+//     case TICKET_ACTION.SEARCH_TICKET_OK:
+//       return {
+//         // ...state, ticket: [state.ticket, action.payload]
+//       };
+//     case TICKET_ACTION.SEARCH_TICKET_ERR:
+//       return {
+//         console.log('123')
+//       }
+//   }
+// }
 
 export const getStateCities = (state: State) => state.cities;
 export const getStateTicket = (state: State) => state.ticket;

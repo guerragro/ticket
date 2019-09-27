@@ -19,6 +19,8 @@ export class TicketEffects {
     public actions$: Actions
   ) {}
 
+  // эффект отслеживает любое возникновение экшена, а конкретно loadCities, перехватывает его
+  // и запускает запрос на сервер, который передает информацию следующем экшену
   @Effect()
   loadCities = this.actions$
     .pipe(
@@ -28,6 +30,7 @@ export class TicketEffects {
         // catchError(() => new fromAction.LoadCitiesErr())
       );
 
+  // pipe позволяет использовать несколько операторов
   @Effect()
   loadTicket = this.actions$
     .pipe(
