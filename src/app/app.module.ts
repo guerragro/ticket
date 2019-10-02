@@ -14,6 +14,7 @@ import { ticketReducer } from './redux/ticket.reducer';
 import { reducer } from './redux/app.state';
 import {EffectsModule} from '@ngrx/effects';
 import {TicketEffects} from './redux/effects';
+import {MobxStore} from './mobx/mobxstore';
 
 // import { TicketStore } from './mobx/TicketStore';
 
@@ -36,6 +37,7 @@ import {TicketEffects} from './redux/effects';
   providers: [
     TicketService,
     HttpClientModule,
+    MobxStore
     // TicketStore
   ],
   bootstrap: [AppComponent]

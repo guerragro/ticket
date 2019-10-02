@@ -1,3 +1,4 @@
+<div [title]="'Кто ты по жизни'">{{_Heroname}}</div>
 <input type="checkbox" id="partner" (change)="onToggle($event)">
 <div class="container">Меню Поиска
   <div class="row">
@@ -32,4 +33,7 @@
          value="Найти"
          (click)="search($event.target.value)">
 </div>
+<button (click)="change(true)">+</button>
+<button (click)="change(false)">-</button>
+<!--<div *ngFor="let city of (cities | async)">{{city}}</div>-->
 <!--<div *ngFor="let i of (this.cities$ | async)">{{i['name']}}</div>-->

@@ -14,15 +14,15 @@ export class TicketService {
   ) {
   }
 
-  public getDataMonth(data) {
+  public getDataMonth(a, b) {
     // console.log(data);
-    // const params = {
-    //   origin: 'VVO',
-    //   destination: 'SEL',
-    //   month: 'undefiend',
-    //   token: '49679098347c457387656573a8437d2d'
-    // };
-    const params = Object.assign(data, {token: '49679098347c457387656573a8437d2d'});
+    const params = {
+      origin: a,
+      destination: b,
+      month: '2019-11',
+      token: '49679098347c457387656573a8437d2d'
+    };
+    // const params = Object.assign(data, {token: '49679098347c457387656573a8437d2d'});
     // console.log(params);
     return this.http.get(UrlModels.DataMonth, {params: (params)});
   }

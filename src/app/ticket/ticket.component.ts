@@ -18,7 +18,7 @@ import 'rxjs/add/operator/do';
 })
 export class TicketComponent implements OnInit {
 
-  name: any;
+  name: number;
 
   constructor(
     public service: TicketService,
@@ -26,6 +26,7 @@ export class TicketComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // TODO all for REDUX
     // как только вызывается этот action, срабатывает effects
     this.store.dispatch(new fromAction.LoadCities());
     // this.store.select(appState.getStateCities).subscribe(
@@ -49,12 +50,10 @@ export class TicketComponent implements OnInit {
     // this.service.getTest().subscribe(
     //   res => this.test(res['directions'])
     // );
+  //  TODO all for MOBX
   }
 
-  // test(ans) {
-  //   this.name = ans.filter(a => a['direct'] === true);
-  //   console.log(this.name);
-  // }
-
-
+  truesite(a) {
+    console.log(a);
+  }
 }
