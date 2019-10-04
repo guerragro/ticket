@@ -35,5 +35,15 @@
 </div>
 <button (click)="change(true)">+</button>
 <button (click)="change(false)">-</button>
+
+<!-- TODO mobx-->
+<button (click)="checkTest()">test mobx</button>
+<!--<div *ngFor="let city of (initState | async)">{{city.name}}</div>-->
+
+<!-- понять почему без async не работает-->
+<!--<div>Число {{this.number | async}}</div>-->
+<!--<div>Число {{this.number}}</div>-->
+<!--<button (click)="addNumber()">+</button>-->
+
 <!--<div *ngFor="let city of (cities | async)">{{city}}</div>-->
 <!--<div *ngFor="let i of (this.cities$ | async)">{{i['name']}}</div>-->
