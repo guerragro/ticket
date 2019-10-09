@@ -30,14 +30,6 @@ export function ticketReducer(state = InitialState, action: fromAction.Action) {
       return {
         ...state, ticket: [...state.ticket, action.payload]
       };
-    // case TICKET_ACTION.SEARCH_RESTICKET:
-    //   return {
-    //     ...state, ticketres: [...state.ticketres, action.payload]
-    //   };
-    // case TICKET_ACTION.LOAD_CITIES:
-    //   return {
-    //     ...state, cities: action.payload
-    //   };
     case TICKET_ACTION.LOAD_CITIES_OK:
       return {
         ...state, cities: action.payload
@@ -47,8 +39,8 @@ export function ticketReducer(state = InitialState, action: fromAction.Action) {
   }
 }
 
-// редьюсер под города, я так думаю
-// export function CitiesReducer(state = InitialState, action: Action) {
+// Города
+// export function CitiesReducer(state = InitialState, action: fromAction.Action) {
 //   switch (action.type) {
 //     case TICKET_ACTION.LOAD_CITIES_OK:
 //       return {
@@ -56,13 +48,13 @@ export function ticketReducer(state = InitialState, action: fromAction.Action) {
 //       };
 //     case TICKET_ACTION.LOAD_CITIES_ERR:
 //       return {
-//         console.log('ошибка загрузки')
+//         console.log('ERROR')
 //       }
 //   }
 // }
 
-// редьюсер под поиск билетов
-// export function TicketReducer(state = InitialState, action: Action) {
+// Поиск билетов
+// export function TicketReducer(state = InitialState, action: fromAction.Action) {
 //   switch (action.type) {
 //     case TICKET_ACTION.SEARCH_TICKET_OK:
 //       return {
@@ -70,7 +62,7 @@ export function ticketReducer(state = InitialState, action: fromAction.Action) {
 //       };
 //     case TICKET_ACTION.SEARCH_TICKET_ERR:
 //       return {
-//         console.log('123')
+//         console.log('ERROR')
 //       }
 //   }
 // }

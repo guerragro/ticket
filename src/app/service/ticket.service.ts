@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UrlModels } from '../api';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -58,7 +58,7 @@ export class TicketService {
   // getSpecial() {
   //   return this.http.get(UrlModels.Special);
   // }
-  //
+
   getPopular() {
     const params = {
       origin: 'VVO',

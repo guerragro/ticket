@@ -1,4 +1,3 @@
-<div [title]="'Кто ты по жизни'">{{_Heroname}}</div>
 <input type="checkbox" id="partner" (change)="onToggle($event)">
 <div class="container">Меню Поиска
   <div class="row">
@@ -33,11 +32,11 @@
          value="Найти"
          (click)="search($event.target.value)">
 </div>
-<button (click)="change(true)">+</button>
-<button (click)="change(false)">-</button>
+<!--<button (click)="change(true)">+</button>-->
+<!--<button (click)="change(false)">-</button>-->
 
-<!-- TODO mobx-->
-<button (click)="checkTest()">test mobx</button>
+<!--&lt;!&ndash; TODO mobx&ndash;&gt;-->
+<!--<button (click)="checkTest()">test mobx</button>-->
 <!--<div *ngFor="let city of (initState | async)">{{city.name}}</div>-->
 
 <!-- понять почему без async не работает-->

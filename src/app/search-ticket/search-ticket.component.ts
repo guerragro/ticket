@@ -41,26 +41,6 @@ export class SearchTicketComponent implements OnInit {
   number$: Observable<any>;
   number;
 
-  @Input() _Heroname: string | number;
-
-  @Input()
-  set Heroname(value) {
-    if (value > 13) {
-      this._Heroname = 'Еще молодой';
-    } else if (value < 34) {
-      this._Heroname = 'Лох это судьба';
-    } else {
-      this._Heroname = null;
-    }
-  }
-  get Heroname() {
-    return this._Heroname;
-  }
-  @Output() hello = new EventEmitter<boolean>();
-  change(a) {
-    this.hello.emit(a);
-  }
-
   constructor(
     // TODO redux
     public store: Store<appState.State>,
@@ -88,7 +68,6 @@ export class SearchTicketComponent implements OnInit {
     // this.number$.subscribe(
     //   res => this.number = res
     // );
-
   }
 
   ngOnInit() {
@@ -96,33 +75,6 @@ export class SearchTicketComponent implements OnInit {
     //   res => console.log(res)
     // );
   }
-
-  // search(event) {
-  //   if (this.origin === '' && this.destination === '' && this.departureDate === '' && this.arrivalDate === '') {
-  //     return;
-  //   } else {
-  //     this.id++;
-  //     // this._ticketService.getPriceList(new TicketModel(this.origin, this.destination)).subscribe(
-  //     //   res => console.log(res),
-  //     //   err => console.log(err)
-  //     // );
-  //     // const ticketModel = new TicketModel(this.origin, this.destination, this.departureDate, this.arrivalDate, this.id);
-  //     //       // console.log(ticketModel);
-  //     // this.store.select(new fromAction.TicketReQ(new TicketModel(this.origin, this.destination)));
-  //     this._ticketService.getDataMonth(new TicketModel(this.origin, this.destination)).subscribe(
-  //       res => {
-  //         this.store.dispatch(new fromAction.TicketReS(res));
-  //         console.log(res);
-  //       },
-  //       err => console.log(err)
-  //     );
-  //     // this.store.dispatch(new fromAction.Ticket());
-  //     //       // this.store.dispatch(ticketModel);
-  //   }
-  //   // this.model.push(this.ticketModel);
-  //   // console.log(this.model);
-  // }
-
   // true = цены с партнерским маркетом, false наоборот
   onToggle(event) {
     console.log(event.target.checked);
@@ -173,7 +125,33 @@ export class SearchTicketComponent implements OnInit {
     console.log(this.ticket);
   }
 
-  checkTest() {
-    this.mobxstore.getTest(this.origin);
-  }
+  // checkTest() {
+  //   this.mobxstore.getTest(this.origin);
+  // }
+
+  // search(event) {
+  //   if (this.origin === '' && this.destination === '' && this.departureDate === '' && this.arrivalDate === '') {
+  //     return;
+  //   } else {
+  //     this.id++;
+  //     // this._ticketService.getPriceList(new TicketModel(this.origin, this.destination)).subscribe(
+  //     //   res => console.log(res),
+  //     //   err => console.log(err)
+  //     // );
+  //     // const ticketModel = new TicketModel(this.origin, this.destination, this.departureDate, this.arrivalDate, this.id);
+  //     //       // console.log(ticketModel);
+  //     // this.store.select(new fromAction.TicketReQ(new TicketModel(this.origin, this.destination)));
+  //     this._ticketService.getDataMonth(new TicketModel(this.origin, this.destination)).subscribe(
+  //       res => {
+  //         this.store.dispatch(new fromAction.TicketReS(res));
+  //         console.log(res);
+  //       },
+  //       err => console.log(err)
+  //     );
+  //     // this.store.dispatch(new fromAction.Ticket());
+  //     //       // this.store.dispatch(ticketModel);
+  //   }
+  //   // this.model.push(this.ticketModel);
+  //   // console.log(this.model);
+  // }
 }

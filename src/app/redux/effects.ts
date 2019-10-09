@@ -40,20 +40,3 @@ export class TicketEffects {
       )
     );
 }
-
-//   @Effect()
-//   loadCities$ = this.actions$
-//     .pipe(
-//       ofType(ArticlesActions.LoadArticles),
-//       mergeMap(() => this.articlesService.getArticles().pipe(
-//         map(articles => (new ArticlesLoadedSuccess({articles: articles}))),
-//         catchError(() => of(new ArticlesLoadedError())
-//         ))
-//       )
-//     );
-//
-//   constructor(
-//     private actions$: Actions,
-//     private articlesService: ArticlesService
-//   ) {}
-// }

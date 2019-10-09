@@ -27,3 +27,5 @@ npm install --save rxjs-compat
 npm install mobx для action, observable, computed
 npm install rxjs
 npm install ngx-mobx для fromMobx
+
+npm start --proxy

@@ -31,6 +31,7 @@ import {MobxStore} from './mobx/mobxstore';
     HttpClientModule,
     // регистрируем редакс и все редьюсеры
     // StoreModule.forRoot({Ticket: ticketReducer})
+    // второй способ регистрацию редьюсера
     StoreModule.forRoot(reducer),
     EffectsModule.forRoot([TicketEffects])
   ],

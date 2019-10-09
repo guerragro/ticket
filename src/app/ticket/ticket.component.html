@@ -1,6 +1,4 @@
 <div style="text-align: center">Поиск авиабилетов</div>
-<input type="text" [(ngModel)]="name">
-<app-search-ticket [Heroname]="name" (hello)="truesite($event)"></app-search-ticket>
 <div class="container" *ngIf="true">
   <div class="row">
     <div class="col-lg-3 col-sm-3">Фильтры</div>
@@ -33,3 +31,4 @@
     </div>
   </div>
 </div>
+<app-search-ticket></app-search-ticket>

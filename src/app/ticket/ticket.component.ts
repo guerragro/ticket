@@ -18,8 +18,6 @@ import 'rxjs/add/operator/do';
 })
 export class TicketComponent implements OnInit {
 
-  name: number;
-
   constructor(
     public service: TicketService,
     public store: Store<appState.State>
@@ -51,9 +49,5 @@ export class TicketComponent implements OnInit {
     //   res => this.test(res['directions'])
     // );
   //  TODO all for MOBX
-  }
-
-  truesite(a) {
-    console.log(a);
   }
 }

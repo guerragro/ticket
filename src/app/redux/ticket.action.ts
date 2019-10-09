@@ -32,7 +32,6 @@ export class SpecialTicket implements Action {
   ) {}
 }
 
-// два экшена на загрузку городов
 export class LoadCities implements Action {
   readonly type = TICKET_ACTION.LOAD_CITIES;
 }
