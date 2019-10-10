@@ -7,7 +7,6 @@ import {Action} from '@ngrx/store';
 export interface State {
   cities?: CitiesModel[];
   ticket?: any;
-  // ticketres?: any[];
   special?: any[];
   view: boolean;
 }
@@ -66,6 +65,7 @@ export function ticketReducer(state = InitialState, action: fromAction.Action) {
 //       }
 //   }
 // }
+// Специальные предложения
 
 export const getStateCities = (state: State) => state.cities;
 export const getStateTicket = (state: State) => state.ticket;
