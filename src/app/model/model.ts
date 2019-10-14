@@ -21,7 +21,3 @@ export interface CitiesModel {
   coordinates: object;
   cases: object;
 }
-
-// export interface TicketInterface {
-//   model: TicketModel[];
-// }

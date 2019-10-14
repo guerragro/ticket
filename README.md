@@ -10,9 +10,12 @@ https://support.travelpayouts.com/hc/en-us/articles/203956163
    - state отвечающий за города;
    - state отвечающий за специальные приложения из городов на которые делается запрос по поиску;
 
-npm install --save rxjs-compat
-npm install mobx для action, observable, computed
+npm install @ngrx/store --save
+
 npm install rxjs
+npm install --save rxjs-compat
+
+npm install mobx для action, observable, computed
 npm install ngx-mobx для fromMobx
 
 npm start --proxy

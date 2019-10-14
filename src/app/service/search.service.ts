@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UrlModels } from '../api';
+import { UrlModels } from './api';
 import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class TicketService {
+export class SearchService {
 
   constructor(
     private http: HttpClient

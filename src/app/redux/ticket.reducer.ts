@@ -1,6 +1,6 @@
 import {TICKET_ACTION} from './ticket.action';
 import * as fromAction from './ticket.action';
-import { CitiesModel } from '../model';
+import { CitiesModel } from '../model/model';
 import {Action} from '@ngrx/store';
 
 // модель изначального изначальное состояние
@@ -21,7 +21,6 @@ const InitialState: State = {
 export function ticketReducer(state = InitialState, action: fromAction.Action) {
   switch (action.type) {
     case TICKET_ACTION.SPECIAL_TICKET:
-    // case Ticket.SPECIAL_TICKET:
       return {
         ...state, special: [...state.special, action.payload]
       };

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import {Effect, Actions, ofType} from '@ngrx/effects';
 
-import { TicketService } from '../service/ticket.service';
+import { SearchService } from '../service/search.service';
 import {select, Store} from '@ngrx/store';
 import { of } from 'rxjs/observable/of';
 import { map, mergeMap, switchMap, catchError } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import * as fromAction from '../redux/ticket.action';
 export class TicketEffects {
 
   constructor(
-    public service: TicketService,
+    public service: SearchService,
     public store: Store<appState.State>,
     public actions$: Actions
   ) {}
@@ -29,14 +29,4 @@ export class TicketEffects {
         map(cities => new fromAction.LoadCitiesOk(cities)))),
         // catchError(() => new fromAction.LoadCitiesErr())
       );
-
-  // pipe позволяет использовать несколько операторов
-  @Effect()
-  loadTicket = this.actions$
-    .pipe(
-      ofType(fromAction.TICKET_ACTION.SEARCH_TICKET),
-      mergeMap(() => this.service.getPriceMonth().pipe(
-        map((ticket: []) => new fromAction.SearchTicketOk(ticket)))
-      )
-    );
 }

@@ -5,13 +5,14 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { TicketService } from './service/ticket.service';
+import { SearchService } from './service/search.service';
 import { TicketComponent } from './ticket/ticket.component';
 import { SearchTicketComponent } from './search-ticket/search-ticket.component';
 
 import { StoreModule } from '@ngrx/store';
 import { ticketReducer } from './redux/ticket.reducer';
 import { reducer } from './redux/app.state';
+import { appReducers } from './store/reducers/app.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {TicketEffects} from './redux/effects';
 import {MobxStore} from './mobx/mobxstore';
@@ -32,11 +33,13 @@ import {MobxStore} from './mobx/mobxstore';
     // регистрируем редакс и все редьюсеры
     // StoreModule.forRoot({Ticket: ticketReducer})
     // второй способ регистрацию редьюсера
-    StoreModule.forRoot(reducer),
+    // StoreModule.forRoot(reducer),
+    // Полностью переработаный store
+    StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([TicketEffects])
   ],
   providers: [
-    TicketService,
+    SearchService,
     HttpClientModule,
     MobxStore
     // TicketStore

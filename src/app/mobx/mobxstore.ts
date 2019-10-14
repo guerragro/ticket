@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {action, computed, observable} from 'mobx';
 
-import { TicketService } from '../service/ticket.service';
-import { CitiesModel } from '../model';
+import { SearchService } from '../service/search.service';
+import { CitiesModel } from '../model/model';
 
 // export class Ticket {
 //   constructor
@@ -12,7 +12,7 @@ import { CitiesModel } from '../model';
 export class MobxStore {
 
   constructor(
-    public service: TicketService
+    public service: SearchService
   ) {}
 
   // наше состояние

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TicketService } from '../service/ticket.service';
+import { SearchService } from '../service/search.service';
 import { fromMobx } from 'ngx-mobx';
 import { Observable } from 'rxjs';
 import { fromEvent } from 'rxjs';
@@ -19,7 +19,7 @@ import 'rxjs/add/operator/do';
 export class TicketComponent implements OnInit {
 
   constructor(
-    public service: TicketService,
+    public service: SearchService,
     public store: Store<appState.State>
   ) {}
 
@@ -40,13 +40,6 @@ export class TicketComponent implements OnInit {
     // );
     // this.store.select(appState.getStateTicket).subscribe(
     //   res => console.log(res)
-    // );
-    // this._ticketService.gitDataMonth().subscribe(
-    //   res => console.log(res),
-    //   err => console.log(err)
-    // );
-    // this.service.getTest().subscribe(
-    //   res => this.test(res['directions'])
     // );
   //  TODO all for MOBX
   }

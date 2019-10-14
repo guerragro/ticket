@@ -1,0 +1,7 @@
+export enum TICKET_ACTION {
+  LOAD_TICKET = 'LOAD_TICKET',
+  LOAD_TICKET_OK = 'LOAD_TICKET_OK',
+  LOAD_TICKET_ERR = 'LOAD_TICKET_ERR'
+}
+
+// export type Action =
