@@ -1,22 +1,20 @@
 export interface CitiesState {
-  cities: [];
+  cities: any[];
 }
 
 export const InitialCitiesState: CitiesState = {
   cities: null
 };
 
-// state menu
-// import { IMenu } from '../../models/menu.interface';
+// state cart
+// import {ICart} from '../../models/cart.interface';
 //
-// export interface IMenuState {
-//   menus: IMenu[];
-//   selectedMenu: IMenu;
+// export interface ICartState {
+//   cart: ICart;
 //   inProgress: boolean;
 // }
 //
-// export const initialMenuState: IMenuState = {
-//   menus: null,
-//   selectedMenu: null,
+// export const initialCartState: ICartState = {
+//   cart: null,
 //   inProgress: null
 // };

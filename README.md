@@ -15,7 +15,4 @@ npm install @ngrx/store --save
 npm install rxjs
 npm install --save rxjs-compat
 
-npm install mobx для action, observable, computed
-npm install ngx-mobx для fromMobx
-
 npm start --proxy

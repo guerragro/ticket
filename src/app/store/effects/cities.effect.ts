@@ -12,6 +12,8 @@ export class CitiesEffect {
     public action$: Actions
   ) {}
 
+  // эффект отслеживает любую инициализацию экшена, а конкретно loadCities, перехватывает его
+  // и запускает запрос на сервер, который передает информацию следующем экшену
   @Effect()
   loadCities = this.action$.pipe(
     ofType(fromCitiesAction.CITIES_ACTION.LOAD_CITIES),

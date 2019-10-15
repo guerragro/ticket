@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../service/search.service';
-import { fromMobx } from 'ngx-mobx';
 import { Observable } from 'rxjs';
 import { fromEvent } from 'rxjs';
-// import { TicketStore } from '../mobx/TicketStore';
 
 import {select, Store} from '@ngrx/store';
-import * as fromAction from '../redux/ticket.action';
-import * as fromReducer from '../redux/ticket.reducer';
-import * as appState from '../redux/app.state';
 import 'rxjs/add/operator/do';
+import * as fromCitiesWeather from '../store/actions/cities.action';
+import * as fromState from '../store/states/app.state';
 
 @Component({
   selector: 'app-ticket',
@@ -19,28 +16,16 @@ import 'rxjs/add/operator/do';
 export class TicketComponent implements OnInit {
 
   constructor(
-    public service: SearchService,
-    public store: Store<appState.State>
+    public store: Store<fromState.AppState>
   ) {}
 
   ngOnInit() {
-    // TODO all for REDUX
+    // TODO all for NGRX
     // как только вызывается этот action, срабатывает effects
-    this.store.dispatch(new fromAction.LoadCities());
-    // this.store.select(appState.getStateCities).subscribe(
-    //   res => console.log(res)
-    // );
-    // подписка на получение текущего состояния
+    this.store.dispatch(new fromCitiesWeather.LoadCities());
+    // получение текущего состояния
     this.store.subscribe(
       res => console.log(res)
     );
-    // this._ticketService.getDataSpecial().subscribe(
-    //   res => this.store.dispatch(new fromAction.SpecialTicket(res)),
-    //   err => console.log(err)
-    // );
-    // this.store.select(appState.getStateTicket).subscribe(
-    //   res => console.log(res)
-    // );
-  //  TODO all for MOBX
   }
 }

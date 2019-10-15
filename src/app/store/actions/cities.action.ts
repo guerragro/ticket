@@ -12,7 +12,7 @@ export class LoadCities implements Action {
 
 export class LoadCitiesOk implements Action {
   readonly type = CITIES_ACTION.LOAD_CITIES_OK;
-  constructor(public payload) {}
+  constructor(public payload: any) {}
 }
 
 export class LoadCitiesErr implements Action {

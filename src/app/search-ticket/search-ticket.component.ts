@@ -1,15 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { CitiesModel, TicketModel } from '../model/model';
-import {SearchService} from '../service/search.service';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as fromAction from '../redux/ticket.action';
-import * as appState from '../redux/app.state';
-import {State} from '../redux/ticket.reducer';
 
-import {MobxStore} from '../mobx/mobxstore';
-import {fromMobx} from 'ngx-mobx';
+import * as fromState from '../store/states/app.state';
 
 @Component({
   selector: 'app-search-ticket',
@@ -24,16 +19,18 @@ export class SearchTicketComponent implements OnInit {
   arrivalDate: any;
   ticket: any = [];
 
-  // // TODO redux
-  cities$: Observable<CitiesModel[]>;
+  // // TODO NGRX
+  // cities$: Observable<CitiesModel[]>;
   cities;
 
   constructor(
     // public store: Store<appState.State>,
+    public store: Store<fromState.AppState>
   ) {
-    // получения состояния по городам
-    // this.cities$ = this.store.select(appState.getStateCities);
-    // this.cities$.subscribe(res => this.cities = res);
+    this.cities = this.store.select(fromState.getInitialState);
+    this.cities.subscribe(
+      res => console.log(res)
+    );
   }
 
   ngOnInit() {
@@ -86,9 +83,6 @@ export class SearchTicketComponent implements OnInit {
   //   }, 5000);
   //   console.log(this.ticket);
   // }
-  // checkTest() {
-  //   this.mobxstore.getTest(this.origin);
-  // }
   // search(event) {
   //   if (this.origin === '' && this.destination === '' && this.departureDate === '' && this.arrivalDate === '') {
   //     return;
@@ -117,29 +111,11 @@ export class SearchTicketComponent implements OnInit {
   // constructor(
   //   // TODO redux
   //   public store: Store<appState.State>,
-  //   // TODO mobx
-  //   public mobxstore: MobxStore,
-  //   public service: SearchService
   // ) {
   //   // TODO redux
   //   // получения состояния по городам
   //   // this.cities$ = this.store.select(appState.getStateCities);
   //   // this.cities$.subscribe(res => this.cities = res);
-  //   // TODO mobx
-  //   // гет запрос списка по городам
-  //   this.mobxstore.getDataCities();
-  //   // получения списка из стора
-  //   this.initState = fromMobx(() => this.mobxstore.InitState);
-  //   console.log(this.initState);
-  //   // TODO mobx
-  //   // запуск функции, которые увеличевает состояние на единицу
-  //   // this.mobxstore.getNumber();
-  //   // здесь мы получаем наше состояние
-  //   // this.number = fromMobx(() => this.mobxstore.Number);
-  //   // fixme понять почему не работает
-  //   // this.number$ = fromMobx(() => this.mobxstore.Number);
-  //   // this.number$.subscribe(
-  //   //   res => this.number = res
-  //   // );
+
   // }
 }
