@@ -1,16 +1,16 @@
 import { CitiesState } from './cities.state';
+import { SpecialState } from './special.state';
 
 // модель
 export interface AppState {
   cities: CitiesState;
-  // special?: any;
+  special: SpecialState;
   // ticket?: string[];
 }
 
 export const InitialState: AppState = {
   cities: null,
-  // special: null,
-  // ticket: ['Hello World']
+  special: null,
 };
 
 export function getInitialState(): AppState {
