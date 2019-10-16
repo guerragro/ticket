@@ -1,11 +1,13 @@
 import { CitiesState } from './cities.state';
+import { CitiesModel } from '../../model/model';
 import { SpecialState } from './special.state';
 
 // модель
 export interface AppState {
+  // cities: CitiesState;
   cities: CitiesState;
   special: SpecialState;
-  // ticket?: string[];
+  // search?: string[];
 }
 
 export const InitialState: AppState = {

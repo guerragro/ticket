@@ -6,19 +6,19 @@ export enum SPECIAL_ACTION {
   LOAD_SPECIAL_ERR = 'LOAD_SPECIAL_ERR'
 }
 
-export class loadSpecial implements Action {
+export class LoadSpecial implements Action {
   readonly type = SPECIAL_ACTION.LOAD_SPECIAL;
 }
-export class loadSpecialOk implements Action {
+export class LoadSpecialOk implements Action {
   readonly type = SPECIAL_ACTION.LOAD_SPECIAL_OK;
   constructor(public payload) {}
 }
-export class loadSpecialErr implements Action {
+export class LoadSpecialErr implements Action {
   readonly type = SPECIAL_ACTION.LOAD_SPECIAL_ERR;
   constructor(public payload) {}
 }
 
-export type SpecialAction = loadSpecial | loadSpecialOk | loadSpecialErr;
+export type SpecialAction = LoadSpecial | LoadSpecialOk | LoadSpecialErr;
 
 // import { Action } from '@ngrx/store';
 // import { ICart } from '../../models/cart.interface';

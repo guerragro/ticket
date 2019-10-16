@@ -6,8 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { SearchService } from './service/search.service';
-import { TicketComponent } from './ticket/ticket.component';
-import { SearchTicketComponent } from './search-ticket/search-ticket.component';
+import { SearchComponent } from './search/search.component';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -17,8 +16,7 @@ import { CitiesEffect } from './store/effects/cities.effect';
 @NgModule({
   declarations: [
     AppComponent,
-    TicketComponent,
-    SearchTicketComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +24,6 @@ import { CitiesEffect } from './store/effects/cities.effect';
     FormsModule,
     HttpClientModule,
     // регистрируем редакс и все редьюсеры
-    // Полностью переработаный store
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([CitiesEffect])
   ],

@@ -8,15 +8,15 @@ export const appReducers: ActionReducerMap<AppState, any> = {
   special: specialReducer,
 };
 // предыдущая версия
-// import {TICKET_ACTION} from './ticket.action';
-// import * as fromAction from './ticket.action';
+// import {TICKET_ACTION} from './search.action';
+// import * as fromAction from './search.action';
 // import { CitiesModel } from '../model/model';
 // import {Action} from '@ngrx/store';
 //
 // // модель изначального изначальное состояние
 // export interface State {
 //   cities?: CitiesModel[];
-//   ticket?: any;
+//   search?: any;
 //   special?: any[];
 //   view: boolean;
 // }
@@ -24,7 +24,7 @@ export const appReducers: ActionReducerMap<AppState, any> = {
 // const InitialState: State = {
 //   // изначальное состояние
 //   view: false,
-//   ticket: []
+//   search: []
 // };
 //
 // // редьюсер это просто функция, которая берет action and state и выдает новое состоянии
@@ -36,7 +36,7 @@ export const appReducers: ActionReducerMap<AppState, any> = {
 //       };
 //     case TICKET_ACTION.SEARCH_TICKET_OK:
 //       return {
-//         ...state, ticket: [...state.ticket, action.payload]
+//         ...state, search: [...state.search, action.payload]
 //       };
 //     case TICKET_ACTION.LOAD_CITIES_OK:
 //       return {
@@ -66,7 +66,7 @@ export const appReducers: ActionReducerMap<AppState, any> = {
 // //   switch (action.type) {
 // //     case TICKET_ACTION.SEARCH_TICKET_OK:
 // //       return {
-// //         // ...state, ticket: [state.ticket, action.payload]
+// //         // ...state, search: [state.search, action.payload]
 // //       };
 // //     case TICKET_ACTION.SEARCH_TICKET_ERR:
 // //       return {
@@ -77,7 +77,7 @@ export const appReducers: ActionReducerMap<AppState, any> = {
 // // Специальные предложения
 //
 // export const getStateCities = (state: State) => state.cities;
-// export const getStateTicket = (state: State) => state.ticket;
+// export const getStateTicket = (state: State) => state.search;
 // export const getStateSpecial = (state: State) => state.special;
 
 // все редьюсеры

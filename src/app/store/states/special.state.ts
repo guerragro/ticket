@@ -3,6 +3,6 @@ export interface SpecialState {
 }
 
 export const InitialSpecialState: SpecialState = {
-  special: null
+  special: ['hello', 'Khabarovsk']
 };
 

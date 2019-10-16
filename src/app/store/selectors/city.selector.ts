@@ -10,7 +10,7 @@ export const selectCitiesList = createSelector(
 );
 
 // Старое
-// import * as fromReducer from './ticket.reducer';
+// import * as fromReducer from './search.reducer';
 // import { ActionReducer, ActionReducerMap, createSelector, MetaReducer, createFeatureSelector } from '@ngrx/store';
 //
 // // получаем состояние из редьюсера

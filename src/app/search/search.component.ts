@@ -1,17 +1,23 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { CitiesModel, TicketModel } from '../model/model';
-
-import { Store } from '@ngrx/store';
+import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../service/search.service';
 import { Observable } from 'rxjs';
+import { fromEvent } from 'rxjs';
 
+import {select, Store} from '@ngrx/store';
+import 'rxjs/add/operator/do';
+import * as fromCitiesWeather from '../store/actions/cities.action';
 import * as fromState from '../store/states/app.state';
 
 @Component({
-  selector: 'app-search-ticket',
-  templateUrl: './search-ticket.component.html',
-  styleUrls: ['./search-ticket.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class SearchTicketComponent implements OnInit {
+export class SearchComponent implements OnInit {
+
+  constructor(
+    public store: Store<fromState.AppState>
+  ) {}
 
   origin: string;
   destination: string;
@@ -23,21 +29,14 @@ export class SearchTicketComponent implements OnInit {
   // cities$: Observable<CitiesModel[]>;
   cities;
 
-  constructor(
-    // public store: Store<appState.State>,
-    public store: Store<fromState.AppState>
-  ) {
-    this.cities = this.store.select(fromState.getInitialState);
-    this.cities.subscribe(
+  ngOnInit() {
+    // TODO all for NGRX
+    // как только вызывается этот action, срабатывает effects
+    this.store.dispatch(new fromCitiesWeather.LoadCities());
+    // получение текущего состояния
+    this.store.subscribe(
       res => console.log(res)
     );
-  }
-
-  ngOnInit() {
-  }
-
-  search(event) {
-
   }
 
   // // LAX - Лос Анджелес
@@ -75,13 +74,13 @@ export class SearchTicketComponent implements OnInit {
   // //  рабочий вариант по получению цена по общим направлениям
   //   setTimeout(() => {this.name.forEach(a =>
   //     this.service.getDataMonth(this.origin, a['iata']).subscribe(
-  //     res => this.ticket.push(res))); }, 5000);
+  //     res => this.search.push(res))); }, 5000);
   //   setTimeout(() => {
   //     this.service.getDataMonth(this.name[0]['iata'], this.destination).subscribe(
   //       res => console.log(res)
   //     );
   //   }, 5000);
-  //   console.log(this.ticket);
+  //   console.log(this.search);
   // }
   // search(event) {
   //   if (this.origin === '' && this.destination === '' && this.departureDate === '' && this.arrivalDate === '') {

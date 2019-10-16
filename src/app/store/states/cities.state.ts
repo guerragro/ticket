@@ -1,5 +1,10 @@
+// import { CitiesModel } from '/src/app/model/model';
+import { CitiesModel} from '../../model/model';
+
+// TODO in city add a array<Cities>
 export interface CitiesState {
   cities: any[];
+  // cities: CitiesModel;
 }
 
 export const InitialCitiesState: CitiesState = {
@@ -18,3 +23,12 @@ export const InitialCitiesState: CitiesState = {
 //   cart: null,
 //   inProgress: null
 // };
+
+// import { IOrderedProduct } from './ordered-product.interface';
+//
+// export class ICart {
+//   id: string;
+//   positions: Array<IOrderedProduct>;
+//   totalCount: number;
+//   totalAmount: number;
+// }
