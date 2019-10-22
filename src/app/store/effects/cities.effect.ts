@@ -3,7 +3,7 @@ import { SearchService } from '../../service/search.service';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import * as fromCitiesAction from '../actions/cities.action';
-import { mergeMap, map } from 'rxjs/operators';
+import {mergeMap, map, catchError} from 'rxjs/operators';
 
 @Injectable()
 export class CitiesEffect {
@@ -18,7 +18,8 @@ export class CitiesEffect {
   loadCities = this.action$.pipe(
     ofType(fromCitiesAction.CITIES_ACTION.LOAD_CITIES),
     mergeMap(() => this.service.getDataCities().pipe(
-      map(cities => new fromCitiesAction.LoadCitiesOk(cities))
+      map(cities => new fromCitiesAction.LoadCitiesOk(cities)),
+      // catchError(() => new fromCitiesAction.LoadCitiesErr())
     ))
   );
 }

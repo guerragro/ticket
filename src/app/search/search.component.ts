@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../service/search.service';
-import { Observable } from 'rxjs';
-import { fromEvent } from 'rxjs';
-
+import {TicketModel} from '../model/model';
 import {select, Store} from '@ngrx/store';
-import 'rxjs/add/operator/do';
-import * as fromCitiesWeather from '../store/actions/cities.action';
+import * as fromCitiesAction from '../store/actions/cities.action';
 import * as fromState from '../store/states/app.state';
+import {from, of, Subject} from 'rxjs';
+import { Observable } from 'rxjs';
+import {LoadSearchOk} from '../store/actions/search.action';
 
 @Component({
   selector: 'app-search',
@@ -16,6 +16,7 @@ import * as fromState from '../store/states/app.state';
 export class SearchComponent implements OnInit {
 
   constructor(
+    public service: SearchService,
     public store: Store<fromState.AppState>
   ) {}
 
@@ -23,7 +24,6 @@ export class SearchComponent implements OnInit {
   destination: string;
   departureDate: any;
   arrivalDate: any;
-  ticket: any = [];
 
   // // TODO NGRX
   // cities$: Observable<CitiesModel[]>;
@@ -32,11 +32,20 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     // TODO all for NGRX
     // как только вызывается этот action, срабатывает effects
-    this.store.dispatch(new fromCitiesWeather.LoadCities());
+    this.store.dispatch(new fromCitiesAction.LoadCities());
     // получение текущего состояния
     this.store.subscribe(
       res => console.log(res)
     );
+  }
+  search(event) {
+    // this.cities = new TicketModel(this.origin, this.destination);
+    // console.log(this.cities);
+    // this.service.getPriceMonth().subscribe(
+    //   res => console.log(res)
+    // );
+    // this.origin = this.cities.cities.filter(city => (city.name === this.origin) ? city.IATA : false);
+    this.store.dispatch(new LoadSearchOk(['123']));
   }
 
   // // LAX - Лос Анджелес
@@ -106,15 +115,5 @@ export class SearchComponent implements OnInit {
   //   }
   //   // this.model.push(this.ticketModel);
   //   // console.log(this.model);
-  // }
-  // constructor(
-  //   // TODO redux
-  //   public store: Store<appState.State>,
-  // ) {
-  //   // TODO redux
-  //   // получения состояния по городам
-  //   // this.cities$ = this.store.select(appState.getStateCities);
-  //   // this.cities$.subscribe(res => this.cities = res);
-
   // }
 }

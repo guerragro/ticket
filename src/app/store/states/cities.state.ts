@@ -3,32 +3,10 @@ import { CitiesModel} from '../../model/model';
 
 // TODO in city add a array<Cities>
 export interface CitiesState {
-  cities: any[];
-  // cities: CitiesModel;
+  // cities: any[];
+  cities: CitiesModel;
 }
 
 export const InitialCitiesState: CitiesState = {
   cities: null
 };
-
-// state cart
-// import {ICart} from '../../models/cart.interface';
-//
-// export interface ICartState {
-//   cart: ICart;
-//   inProgress: boolean;
-// }
-//
-// export const initialCartState: ICartState = {
-//   cart: null,
-//   inProgress: null
-// };
-
-// import { IOrderedProduct } from './ordered-product.interface';
-//
-// export class ICart {
-//   id: string;
-//   positions: Array<IOrderedProduct>;
-//   totalCount: number;
-//   totalAmount: number;
-// }
